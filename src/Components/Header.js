@@ -1,11 +1,13 @@
 import React from "react";
-import { Logo, Home, Watch, Groups, Gamming } from "./Icons";
+import { Logo, Home, Watch, Groups, Gamming, Message, Alarm } from "./Icons";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faPlus, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { withRouter, Link } from "react-router-dom";
 import Input from "./Input";
 import useInput from "../Hooks/useInput";
+import { useQuery } from "react-apollo-hooks";
+import { ME } from "../ShardQueries";
 
 const Container = styled.header`
   display: flex;
@@ -102,10 +104,57 @@ const Navigator = styled.li`
 
 const NavigationInfo = styled.span`display: none;`;
 
-const HeaderRight = styled.div`flex: 1;`;
+const HeaderRight = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
+const Profile = styled(Link)`
+  display: flex;
+  align-items: center;
+  height: 3.6rem;
+  border-radius: 3.6rem;
+  transition: .25s background-color ease;
+  margin-right: 1rem;
+  &:hover {
+    transition-duration: 0s;
+    background-color: ${props => props.theme.lightGreyColor};
+  }
+`;
+
+const Avatar = styled.img`
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 2.8rem;
+`;
+
+const Username = styled.span`
+  font-size: 1.5rem;
+  padding: 0 .5rem;
+  font-weight: 700;
+`;
+
+const Button = styled(Link)`
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${props => props.theme.lightGreyColor};
+  border-radius: 4rem;
+  &:not(:last-child) {
+    margin-right: 1rem;
+  }
+  &:hover {
+    background-color: ${props => props.theme.lightDarkGreyColor};
+  }
+`;
 
 const Header = ({ history }) => {
   const search = useInput();
+  const { data, loading } = useQuery(ME);
   return (
     <Container>
       <HeaderLeft>
@@ -147,7 +196,33 @@ const Header = ({ history }) => {
           </Navigator>
         </NavigatorWrapper>
       </HeaderCenter>
-      <HeaderRight />
+      <HeaderRight>
+        {!loading &&
+          data &&
+          data.me &&
+          <Profile to={`/${data.me.id}`}>
+            <Avatar src={data.me.avatar} />
+            <Username>
+              {data.me.username}
+            </Username>
+          </Profile>}
+        <Button>
+          <FontAwesomeIcon icon={faPlus} size="lg" />
+          <NavigationInfo>Create</NavigationInfo>
+        </Button>
+        <Button>
+          <Message />
+          <NavigationInfo>Create</NavigationInfo>
+        </Button>
+        <Button>
+          <Alarm />
+          <NavigationInfo>Create</NavigationInfo>
+        </Button>
+        <Button>
+          <FontAwesomeIcon icon={faCaretDown} size="2x" />
+          <NavigationInfo>Create</NavigationInfo>
+        </Button>
+      </HeaderRight>
     </Container>
   );
 };

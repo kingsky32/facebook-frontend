@@ -2,6 +2,7 @@ export default {
   bgColor: "#ffffff",
   blackColor: "#1c1e21",
   greyColor: "#606770",
+  lightDarkGreyColor: "#e4e6eb",
   lightGreyColor: "#eef0f3",
   blueColor: "#1877f2",
   darkGreenColor: "#36a420",

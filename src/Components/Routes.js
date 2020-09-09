@@ -7,9 +7,14 @@ import Search from "../Routes/Search";
 import Profile from "../Routes/Profile";
 import Footer from "./Footer";
 import Header from "./Header";
+import { Helmet } from "react-helmet";
+import Favicon from "../Assets/favicon2.ico"
 
 const LoggedInRoutes = () =>
   <>
+    <Helmet>
+    <link rel="shortcut icon" href={Favicon} />
+    </Helmet>
     <Header />
     <Switch>
       <Route exact path="/" component={Home} />
