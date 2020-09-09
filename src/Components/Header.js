@@ -144,10 +144,12 @@ const Button = styled(Link)`
   align-items: center;
   background-color: ${props => props.theme.lightGreyColor};
   border-radius: 4rem;
+  transition: .25s background-color ease;
   &:not(:last-child) {
     margin-right: 1rem;
   }
   &:hover {
+    transition-duration: 0s;
     background-color: ${props => props.theme.lightDarkGreyColor};
   }
 `;
