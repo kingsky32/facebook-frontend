@@ -26,10 +26,8 @@ const FormWrapper = styled.div`
   display: flex;
   width: 100%;
   flex-flow: column nowrap;
-  background-color: #fff;
   padding: 2.5rem 1.8rem 3rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
-  border-radius: ${props => props.theme.borderRadius};
+  ${props => props.theme.boxShadow};
 `;
 
 const Title = styled.div`

@@ -7,6 +7,9 @@ import GlobalStyles from "../Styles/GlobalStyles";
 import Theme from "../Styles/Theme";
 import Routes from "./Routes";
 import { Helmet } from "react-helmet";
+import Favicon from "../Assets/favicon.ico";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const QUERY = gql`
   {
@@ -39,7 +42,7 @@ export default () => {
           href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700"
         />
         <title>Facebook</title>
-        <link rel="icon" href="../Assets/favicon.ico" />
+        <link rel="shortcut icon" href={Favicon} />
       </Helmet>
       <RootWrapper>
         <GlobalStyles />
@@ -48,6 +51,10 @@ export default () => {
             <Routes isLoggedIn={isLoggedIn} />
           </Wrapper>
         </Router>
+        <ToastContainer
+          style={{ fontSize: "1.4rem", lineHeight: "1.7rem" }}
+          position={toast.POSITION.BOTTOM_LEFT}
+        />
       </RootWrapper>
     </ThemeProvider>
   );

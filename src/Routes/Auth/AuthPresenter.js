@@ -5,6 +5,7 @@ import Button from "../../Components/Button";
 import Logo from "../../Assets/Images/logo.svg";
 import Input from "../../Components/Input";
 import { Link } from "react-router-dom";
+import ModalSignUp from "../../Components/ModalSignUp";
 
 const Wrapper = styled.div`background-color: ${props => props.theme.lightGreyColor};`;
 
@@ -34,10 +35,8 @@ const FormWrapper = styled.div`
   flex: 0 0 40rem;
   flex-flow: column nowrap;
   margin-left: 2.5rem;
-  background-color: #fff;
   padding: 1.8rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
-  border-radius: ${props => props.theme.borderRadius};
+  ${props => props.theme.boxShadow};
 `;
 
 const Form = styled.form`
@@ -76,7 +75,17 @@ const EButton = styled(Button)`
   }
 `;
 
-export default ({ email, password, onSubmit }) =>
+export default ({
+  username,
+  firstName,
+  lastName,
+  email,
+  password,
+  onSubmit,
+  onSignUp,
+  isSignUp,
+  onToggleSignUp
+}) =>
   <Wrapper>
     <Container>
       <Helmet>
@@ -95,11 +104,21 @@ export default ({ email, password, onSubmit }) =>
             value={password.value}
             onChange={password.onChange}
           />
-          <Button onClick={() => null} text="Log In" />
+          <Button text="Log In" />
           <ELink to="#">Forgot account?</ELink>
           <Hr />
-          <EButton onClick={() => null} text="Create New Account" />
+          <EButton onClick={onToggleSignUp} text="Create New Account" />
         </Form>
       </FormWrapper>
     </Container>
+    {isSignUp &&
+      <ModalSignUp
+        username={username}
+        firstName={firstName}
+        lastName={lastName}
+        email={email}
+        password={password}
+        onSubmit={onSignUp}
+        onToggleSignUp={onToggleSignUp}
+      />}
   </Wrapper>;
