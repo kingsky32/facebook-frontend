@@ -13,12 +13,12 @@ export default createGlobalStyle`
     font-family: 'Open Sans', sans-serif;
   }
   a {
-    color:${props => props.theme.blueColor};
-        text-decoration:none;
-    }
-    input:focus{
-        outline:none;
-    }
+    color: inherit;
+    text-decoration:none;
+  }
+  input:focus{
+    outline:none;
+  }
   button {
     background: 0 0;
     border: 0;
