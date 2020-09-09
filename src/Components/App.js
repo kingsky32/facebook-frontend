@@ -39,6 +39,7 @@ export default () => {
           href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700"
         />
         <title>Facebook</title>
+        <link rel="icon" href="../Assets/favicon.ico" />
       </Helmet>
       <RootWrapper>
         <GlobalStyles />

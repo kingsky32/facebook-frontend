@@ -2,8 +2,10 @@ import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "../Routes/Home";
 import Auth from "../Routes/Auth";
+import Login from "../Routes/Login";
 import Search from "../Routes/Search";
 import Profile from "../Routes/Profile";
+import Footer from "./Footer";
 
 const LoggedInRoutes = () =>
   <Switch>
@@ -14,9 +16,13 @@ const LoggedInRoutes = () =>
   </Switch>;
 
 const LoggedOutRoutes = () =>
-  <Switch>
-    <Route exact path="/" component={Auth} />
-  </Switch>;
+  <>
+    <Switch>
+      <Route exact path="/" component={Auth} />
+      <Route exact path="/login" component={Login} />
+    </Switch>
+    <Footer />
+  </>;
 
 const AppRouter = ({ isLoggedIn }) =>
   <Switch>
