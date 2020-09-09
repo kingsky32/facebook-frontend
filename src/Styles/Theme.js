@@ -10,6 +10,5 @@ export default {
   boxShadow: `
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
-    border-radius: .6rem;
   `
 };

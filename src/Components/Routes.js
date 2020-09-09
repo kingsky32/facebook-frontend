@@ -6,14 +6,18 @@ import Login from "../Routes/Login";
 import Search from "../Routes/Search";
 import Profile from "../Routes/Profile";
 import Footer from "./Footer";
+import Header from "./Header";
 
 const LoggedInRoutes = () =>
-  <Switch>
-    <Route exact path="/" component={Home} />
-    <Route path="/search" component={Search} />
-    <Route path="/:id" component={Profile} />
-    <Redirect from="*" to="/" />
-  </Switch>;
+  <>
+    <Header />
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/search" component={Search} />
+      <Route path="/:id" component={Profile} />
+      <Redirect from="*" to="/" />
+    </Switch>
+  </>;
 
 const LoggedOutRoutes = () =>
   <>

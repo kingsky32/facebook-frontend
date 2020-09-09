@@ -19,6 +19,7 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   width: 43rem;
+  border-radius: ${props => props.theme.borderRadius};
   ${props => props.theme.boxShadow};
   display: flex;
   flex-flow: column nowrap;

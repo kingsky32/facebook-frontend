@@ -36,6 +36,7 @@ const FormWrapper = styled.div`
   flex-flow: column nowrap;
   margin-left: 2.5rem;
   padding: 1.8rem;
+  border-radius: ${props => props.theme.borderRadius};
   ${props => props.theme.boxShadow};
 `;
 

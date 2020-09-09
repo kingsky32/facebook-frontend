@@ -27,6 +27,7 @@ const FormWrapper = styled.div`
   width: 100%;
   flex-flow: column nowrap;
   padding: 2.5rem 1.8rem 3rem;
+  border-radius: ${props => props.theme.borderRadius};
   ${props => props.theme.boxShadow};
 `;
 
