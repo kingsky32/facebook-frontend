@@ -6,7 +6,7 @@ import { LOCAL_LOG_IN, LOG_IN, CREATE_ACCOUNT } from "./AuthQueries";
 import { toast } from "react-toastify";
 
 export default () => {
-  const [isSignUp, setIsSignUp] = useState(true);
+  const [isSignUp, setIsSignUp] = useState(false);
   const username = useInput("");
   const firstName = useInput("");
   const lastName = useInput("");
