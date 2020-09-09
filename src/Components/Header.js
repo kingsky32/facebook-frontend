@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Logo, Home, Watch, Groups, Gamming } from "./Icons";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
