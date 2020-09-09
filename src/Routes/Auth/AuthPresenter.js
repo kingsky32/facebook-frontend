@@ -105,10 +105,10 @@ export default ({
             onChange={password.onChange}
           />
           <Button text="Log In" />
-          <ELink to="#">Forgot account?</ELink>
-          <Hr />
-          <EButton onClick={onToggleSignUp} text="Create New Account" />
         </Form>
+        <ELink to="#">Forgot account?</ELink>
+        <Hr />
+        <EButton onClick={onToggleSignUp} text="Create New Account" />
       </FormWrapper>
     </Container>
     {isSignUp &&

@@ -4,8 +4,9 @@ import useInput from "../../Hooks/useInput";
 import { useMutation } from "react-apollo-hooks";
 import { LOCAL_LOG_IN, LOG_IN, CREATE_ACCOUNT } from "./AuthQueries";
 import { toast } from "react-toastify";
+import { withRouter } from "react-router-dom";
 
-export default () => {
+const AuthContainer = ({ history }) => {
   const [isSignUp, setIsSignUp] = useState(false);
   const username = useInput("");
   const firstName = useInput("");
@@ -42,6 +43,7 @@ export default () => {
         }
       } catch (error) {
         toast.error("Wrong email/password combination");
+        setTimeout(() => history.push("/login"), 500);
       }
     } else {
       toast.error("Email is required");
@@ -92,3 +94,5 @@ export default () => {
     />
   );
 };
+
+export default withRouter(AuthContainer);

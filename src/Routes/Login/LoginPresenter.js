@@ -62,7 +62,7 @@ const ELink = styled(Link)`
   }
 `;
 
-export default () =>
+export default ({ onSubmit, email, password }) =>
   <Wrapper>
     <Container>
       <Helmet>
@@ -71,14 +71,19 @@ export default () =>
       <Image src={Logo} />
       <FormWrapper>
         <Title>Log Into Facebook</Title>
-        <Form onSubmit={() => null}>
-          <EInput placeholder="Email" />
-          <EInput placeholder="Password" />
-          <Button onClick={() => null} text="Log In" />
-          <LinkContainer>
-            <ELink to="#">Forgot account?</ELink> · <ELink to="#">Sign up for Facebook</ELink>
-          </LinkContainer>
+        <Form onSubmit={onSubmit}>
+          <EInput placeholder="Email" value={email.value} onChange={email.onChange} />
+          <EInput
+            type="password"
+            placeholder="Password"
+            value={password.value}
+            onChange={password.onChange}
+          />
+          <Button text="Log In" />
         </Form>
+        <LinkContainer>
+          <ELink to="#">Forgot account?</ELink> · <ELink to="#">Sign up for Facebook</ELink>
+        </LinkContainer>
       </FormWrapper>
     </Container>
   </Wrapper>;
