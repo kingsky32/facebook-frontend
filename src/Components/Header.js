@@ -6,7 +6,6 @@ import { faSearch, faPlus, faCaretDown } from "@fortawesome/free-solid-svg-icons
 import { withRouter, Link } from "react-router-dom";
 import Input from "./Input";
 import useInput from "../Hooks/useInput";
-import { useQuery } from "react-apollo-hooks";
 import { connect } from "react-redux";
 
 const Container = styled.header`
