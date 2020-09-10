@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Input from "../Input";
+import InputHome from "../InputRound";
+import PropTypes from "prop-types";
 
 const Container = styled.div`
   ${props => props.theme.feedBox};
@@ -29,19 +30,6 @@ const Avatar = styled.img`
   height: 100%;
 `;
 
-const EInput = styled(Input)`
-  flex: 1;
-  height: 4rem;
-  padding: 1rem;
-  border-radius: 4rem;
-  background-color: ${props => props.theme.lightGreyColor};
-  border: 0;
-  font-size: 1.5rem;
-  &:focus {
-    box-shadow: 0 0 0 0;
-  }
-`;
-
 const CreatePostFeed = ({ id, avatar, username }) => {
   return (
     <Container>
@@ -49,10 +37,20 @@ const CreatePostFeed = ({ id, avatar, username }) => {
         <ELink to={`/${id}`}>
           <Avatar src={avatar} />
         </ELink>
-        <EInput value="" onChange={() => null} placeholder={`What's on your mind, ${username}?`} />
+        <InputHome
+          value=""
+          onChange={() => null}
+          placeholder={`What's on your mind, ${username}?`}
+        />
       </InputArea>
     </Container>
   );
+};
+
+CreatePostFeed.propTypes = {
+  id: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired
 };
 
 export default CreatePostFeed;

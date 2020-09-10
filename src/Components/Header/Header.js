@@ -4,11 +4,11 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faPlus, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import Input from "../Input";
 import useInput from "../../Hooks/useInput";
 import { connect } from "react-redux";
 import HeaderNavigatorButton from "./HeaderNavigatorButton";
 import CircleButton from "../CircleButton";
+import InputRound from "../InputRound";
 
 const Container = styled.header`
   display: flex;
@@ -30,19 +30,6 @@ const SearchForm = styled.form`
   position: relative;
   height: 4rem;
   margin-left: .7rem;
-`;
-
-const EInput = styled(Input)`
-  width: 24rem;
-  height: 4rem;
-  padding: 1rem 1rem 1rem 3.9rem;
-  border-radius: 4rem;
-  background-color: ${props => props.theme.lightGreyColor};
-  border: 0;
-  font-size: 1.5rem;
-  &:focus {
-    box-shadow: 0 0 0 0;
-  }
 `;
 
 const SearchIcon = styled.div`
@@ -110,7 +97,11 @@ const Header = ({ facebook: { me } }) => {
           <SearchIcon>
             <FontAwesomeIcon icon={faSearch} size="lg" />
           </SearchIcon>
-          <EInput value={search.value} onChange={search.onChange} placeholder="Search Facebook" />
+          <InputRound
+            value={search.value}
+            onChange={search.onChange}
+            placeholder="Search Facebook"
+          />
         </SearchForm>
       </HeaderLeft>
       <HeaderCenter>

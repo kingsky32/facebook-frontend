@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const NavigationInfo = styled.span`
   display: block;
@@ -80,6 +81,12 @@ const HeaderNavigatorButton = ({ history, icon, to, info }) => {
       </Link>
     </Navigator>
   );
+};
+
+HeaderNavigatorButton.propTypes = {
+  icon: PropTypes.object.isRequired,
+  to: PropTypes.string.isRequired,
+  info: PropTypes.string.isRequired
 };
 
 export default withRouter(HeaderNavigatorButton);

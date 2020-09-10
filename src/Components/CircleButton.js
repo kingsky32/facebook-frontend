@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const Button = styled.div`
   width: 4rem;
@@ -56,6 +57,11 @@ const CircleButton = ({ icon, info }) => {
       </NavigationInfo>
     </Button>
   );
+};
+
+CircleButton.propTypes = {
+  icon: PropTypes.object.isRequired,
+  info: PropTypes.string.isRequired
 };
 
 export default withRouter(CircleButton);

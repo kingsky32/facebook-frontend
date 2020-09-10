@@ -1,22 +1,22 @@
 import React from "react";
+import Input from "./Input";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-const Container = styled.input`
+const EInput = styled(Input)`
+  flex: 1;
+  height: 4rem;
+  padding: 1rem;
+  border-radius: 4rem;
+  background-color: ${props => props.theme.lightGreyColor};
   border: 0;
-  border: 1px solid ${props => props.theme.lightGreyColor};
-  border-radius: ${props => props.theme.borderRadius};
-  background-color: ${props => props.theme.bgColor};
-  font-size: 1.7rem;
-  padding: 1.4rem 1.6rem;
+  font-size: 1.5rem;
   &:focus {
-    border-color: ${props => props.theme.blueColor};
-    box-shadow: 0 0 0 .2rem ${props => props.theme.lightGreyColor};
-    border-color: ${props => props.theme.blueColor};
+    box-shadow: 0 0 0 0;
   }
 `;
 
-const Input = ({
+const InputRound = ({
   placeholder,
   required = false,
   value = "",
@@ -25,17 +25,17 @@ const Input = ({
   type = "text",
   onClick
 }) =>
-  <Container
+  <EInput
     className={className}
     placeholder={placeholder}
     required={required}
     value={value}
     onChange={onChange}
-    onClick={onClick}
     type={type}
+    onClick={onClick}
   />;
 
-Input.propTypes = {
+InputRound.propTypes = {
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   value: PropTypes.string,
@@ -68,4 +68,4 @@ Input.propTypes = {
   onClick: PropTypes.func
 };
 
-export default Input;
+export default InputRound;
