@@ -5,6 +5,7 @@ import PostFeed from "../../Components/Feed/PostFeed";
 import NavigationButton from "../../Components/Navigation/NavigationButton";
 import Avatar from "../../Components/Avatar";
 import NoMorePosts from "../../Components/Feed/NoMorePosts";
+import FriendsIcon from "../../Assets/Images/Icons/friends.png";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -58,6 +59,11 @@ const HomePresenter = ({ me, feeds }) => {
             to={`/profile/${me.id}`}
             icon={<Avatar url={me.avatar} size="3.6rem" />}
             text={me.username}
+          />
+          <NavigationButton
+            to={`/profile/${me.id}`}
+            icon={<Avatar url={FriendsIcon} size="3.6rem" />}
+            text="Friends"
           />
         </LeftNavigationWrapper>
         <FeedWrapper>

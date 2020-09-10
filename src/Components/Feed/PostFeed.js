@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Timestamp from "../Timestamp";
-import EllipsisH from "../../Assets/Images/ellipsisH.png";
-import LikeIco from "../../Assets/Images/like.svg";
+import EllipsisH from "../../Assets/Images/Icons/ellipsisH.png";
+import LikeIco from "../../Assets/Images/Icons/like.svg";
 import { Like, Comment, Share } from "../Icons";
 import Avatar from "../Avatar";
 

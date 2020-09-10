@@ -14,7 +14,7 @@ import Avatar from "../Avatar";
 const Container = styled.header`
   display: flex;
   padding: 0 1rem;
-  background-color: ${props => props.theme.bgColor};
+  background-color: ${props => props.theme.whiteColor};
   box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
   position: fixed;
   top: 0;

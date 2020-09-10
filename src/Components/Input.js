@@ -6,7 +6,7 @@ const Container = styled.input`
   border: 0;
   border: 1px solid ${props => props.theme.lightGreyColor};
   border-radius: ${props => props.theme.borderRadius};
-  background-color: ${props => props.theme.bgColor};
+  background-color: ${props => props.theme.whiteColor};
   font-size: 1.7rem;
   padding: 1.4rem 1.6rem;
   &:focus {

@@ -8,7 +8,7 @@ import Profile from "../Routes/Profile";
 import Footer from "./Footer";
 import Header from "./Header/Header";
 import { Helmet } from "react-helmet";
-import Favicon from "../Assets/favicon2.ico";
+import Favicon from "../Assets/Images/favicon2.ico";
 import { connect } from "react-redux";
 import { me } from "../store";
 import { useQuery } from "react-apollo-hooks";
@@ -16,6 +16,8 @@ import { ME } from "../ShardQueries";
 import Groups from "../Routes/Groups";
 import Watch from "../Routes/Watch";
 import Gamming from "../Routes/Gamming";
+import GlobalStyles from "../Styles/GlobalStyles";
+import AuthGlobalStyles from "../Styles/AuthGlobalStyles";
 
 const LoggedInRoutes = ({ me }) => {
   const { data, loading } = useQuery(ME);
@@ -23,6 +25,7 @@ const LoggedInRoutes = ({ me }) => {
     !loading && data && data.me && me(data.me);
   }, [loading, data, me])
   return (
+    !loading &&
     <>
       <Helmet>
       <link rel="shortcut icon" href={Favicon} />
@@ -43,6 +46,7 @@ const LoggedInRoutes = ({ me }) => {
 
 const LoggedOutRoutes = () =>
   <>
+    <AuthGlobalStyles />
     <Switch>
       <Route exact path="/" component={Auth} />
       <Route exact path="/login" component={Login} />
@@ -52,7 +56,7 @@ const LoggedOutRoutes = () =>
 
 const Routes = ({ isLoggedIn, me }) =>
   <Switch>
-    {isLoggedIn ? <LoggedInRoutes me={me} /> : <LoggedOutRoutes />}
+    {isLoggedIn ? me && <LoggedInRoutes me={me} /> : <LoggedOutRoutes />}
   </Switch>;
 
 const mapDispatchToProps = dispatch => {

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import Button from "../../Components/Button";
-import Logo from "../../Assets/Images/logo.svg";
+import Logo from "../../Assets/Images/Icons/logo.svg";
 import Input from "../../Components/Input";
 import { Link } from "react-router-dom";
 import ModalSignUp from "../../Components/ModalSignUp";
@@ -99,12 +99,13 @@ const AuthPresenter = ({
       </TitleWrapper>
       <FormWrapper>
         <Form onSubmit={onSubmit}>
-          <EInput placeholder="Email" value={email.value} onChange={email.onChange} />
+          <EInput placeholder="Email" value={email.value} onChange={email.onChange} required />
           <EInput
             placeholder="Password"
             type="password"
             value={password.value}
             onChange={password.onChange}
+            required
           />
           <Button text="Log In" />
         </Form>

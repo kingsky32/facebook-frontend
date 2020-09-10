@@ -1,6 +1,6 @@
 import React from "react";
-import icons from "../Assets/Images/icons.png";
-import icons2 from "../Assets/Images/icons2.png";
+import icons from "../Assets/Images/Icons/icons.png";
+import icons2 from "../Assets/Images/Icons/icons2.png";
 import styled from "styled-components";
 
 const Icons = styled.i`

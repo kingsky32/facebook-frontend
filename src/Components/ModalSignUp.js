@@ -125,10 +125,15 @@ const ModalSignUp = ({
             <Input placeholder="Last name" value={lastName.value} onChange={lastName.onChange} />
           </Row>
           <Row>
-            <Input placeholder="Username" value={username.value} onChange={username.onChange} />
+            <Input
+              placeholder="Username"
+              value={username.value}
+              onChange={username.onChange}
+              required
+            />
           </Row>
           <Row>
-            <Input placeholder="Email" value={email.value} onChange={email.onChange} />
+            <Input placeholder="Email" value={email.value} onChange={email.onChange} required />
           </Row>
           <Row>
             <Input
@@ -136,6 +141,7 @@ const ModalSignUp = ({
               type="password"
               value={password.value}
               onChange={password.onChange}
+              required
             />
           </Row>
           <EButton text="Sign Up" />

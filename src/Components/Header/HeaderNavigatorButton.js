@@ -46,7 +46,7 @@ const Navigator = styled.li`
 const NavigationInfo = styled.span`
   display: block;
   position: absolute;
-  color: ${props => props.theme.bgColor};
+  color: ${props => props.theme.whiteColor};
   background-color: ${props => props.theme.blackColor};
   padding: .8rem 1rem;
   font-size: 1.2rem;

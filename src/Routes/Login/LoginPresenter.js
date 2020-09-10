@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import Button from "../../Components/Button";
-import Logo from "../../Assets/Images/logo.svg";
+import Logo from "../../Assets/Images/Icons/logo.svg";
 import Input from "../../Components/Input";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -74,12 +74,13 @@ const LoginPresenter = ({ onSubmit, email, password }) =>
       <FormWrapper>
         <Title>Log Into Facebook</Title>
         <Form onSubmit={onSubmit}>
-          <EInput placeholder="Email" value={email.value} onChange={email.onChange} />
+          <EInput placeholder="Email" value={email.value} onChange={email.onChange} required />
           <EInput
             type="password"
             placeholder="Password"
             value={password.value}
             onChange={password.onChange}
+            required
           />
           <Button text="Log In" />
         </Form>

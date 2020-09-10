@@ -3,13 +3,13 @@ import { gql } from "apollo-boost";
 import styled, { ThemeProvider } from "styled-components";
 import { HashRouter as Router } from "react-router-dom";
 import { useQuery } from "react-apollo-hooks";
-import GlobalStyles from "../Styles/GlobalStyles";
 import Theme from "../Styles/Theme";
 import Routes from "./Routes";
 import { Helmet } from "react-helmet";
-import Favicon from "../Assets/favicon.ico";
+import Favicon from "../Assets/Images/favicon.ico";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import GlobalStyles from "../Styles/GlobalStyles";
 
 const QUERY = gql`
   {
@@ -18,7 +18,6 @@ const QUERY = gql`
 `;
 
 const RootWrapper = styled.section`
-  background-color: ${props => props.theme.bgColor};
   display: flex;
   flex-flow: column nowrap;
   min-height: 100vh;

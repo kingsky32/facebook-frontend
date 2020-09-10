@@ -19,7 +19,7 @@ Facebook clone with Express + Prisma + React + React Redux
 - [ ] Friends
 - [ ] Watch
 - [ ] Groups
-- [ ] Gamming
+- [ ] Gaming
 - [ ] Profile
 - [ ] Messenger
 - [ ] Notifications
