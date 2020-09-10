@@ -5,6 +5,7 @@ import Timestamp from "../Timestamp";
 import EllipsisH from "../../Assets/Images/ellipsisH.png";
 import LikeIco from "../../Assets/Images/like.svg";
 import { Like, Comment, Share } from "../Icons";
+import Avatar from "../Avatar";
 
 const Container = styled.div`
   ${props => props.theme.feedBox};
@@ -27,9 +28,7 @@ const AvatarLink = styled(Link)`
   background-color: #000;
 `;
 
-const Avatar = styled.img`
-  width: 100%;
-  height: 100%;
+const EAvatar = styled(Avatar)`
   &:hover {
     opacity: .95;
   }
@@ -134,11 +133,11 @@ const PostFeed = ({ caption, user, likeCount, createdAt, files }) => {
   return (
     <Container>
       <MetaArea>
-        <AvatarLink to={`/${user.id}`}>
-          <Avatar src={user.avatar} />
+        <AvatarLink to={`/profile/${user.id}`}>
+          <EAvatar url={user.avatar} size="4rem" />
         </AvatarLink>
         <Meta>
-          <Link to={`/${user.id}`}>
+          <Link to={`/profile/${user.id}`}>
             <Username>
               {user.username}
             </Username>

@@ -5,6 +5,7 @@ import InputRound from "../InputRound";
 import PropTypes from "prop-types";
 import CreatePostFeedButton from "./CreatePostFeedButton";
 import { LiveVideo, Photo, Feeling } from "../Icons";
+import Avatar from "../Avatar";
 
 const Container = styled.div`
   ${props => props.theme.feedBox};
@@ -27,11 +28,6 @@ const InputArea = styled.div`
   border-bottom: 1px solid ${props => props.theme.lightGreyColor};
 `;
 
-const Avatar = styled.img`
-  width: 100%;
-  height: 100%;
-`;
-
 const ButtonArea = styled.div`
   display: flex;
   margin-top: 1rem;
@@ -48,8 +44,8 @@ const CreatePostFeed = ({ id, avatar, username }) => {
   return (
     <Container>
       <InputArea>
-        <ELink to={`/${id}`}>
-          <Avatar src={avatar} />
+        <ELink to={`/profile/${id}`}>
+          <Avatar url={avatar} size="4rem" />
         </ELink>
         <EInputRound
           value=""

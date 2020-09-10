@@ -6,6 +6,11 @@ export const ME = gql`
       id
       avatar
       username
+      friends {
+        id
+        avatar
+        username
+      }
     }
   }
 `;

@@ -27,15 +27,14 @@ const LoggedInRoutes = ({ me }) => {
       <Helmet>
       <link rel="shortcut icon" href={Favicon} />
       </Helmet>
-
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/search" component={Search} />
+        <Route path="/search/:term" component={Search} />
         <Route path="/watch" component={Watch} />
         <Route path="/groups" component={Groups} />
         <Route path="/gamming" component={Gamming} />
-        <Route path="/:id" component={Profile} />
+        <Route path="/profile/:id" component={Profile} />
         <Redirect from="*" to="/" />
       </Switch>
     </>

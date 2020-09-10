@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import CreatePostFeed from "../../Components/Feed/CreatePostFeed";
 import PostFeed from "../../Components/Feed/PostFeed";
+import NavigationButton from "../../Components/Navigation/NavigationButton";
+import Avatar from "../../Components/Avatar";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -12,7 +14,7 @@ const Wrapper = styled.div`
   padding-bottom: 1.5rem;
 `;
 
-const Container = styled.div`padding-top: 1.5rem;`;
+const Container = styled.div`position: relative;`;
 
 const FeedWrapper = styled.div`
   width: 100%;
@@ -23,14 +25,57 @@ const FeedWrapper = styled.div`
   }
 `;
 
+const NavigationWrapper = styled.div`
+  width: 35rem;
+  padding: 0 .8rem;
+  top: 7.5rem;
+  position: fixed;
+`;
+
+const LeftNavigationWrapper = styled(NavigationWrapper)`
+  left: 0;
+`;
+
+const RightNavigationWrapper = styled(NavigationWrapper)`
+  right: 0;
+`;
+
+const NavigtaionTitle = styled.span`
+  font-size: 1.7rem;
+  display: block;
+  padding: 2rem 0.8rem 1rem;
+  color: ${props => props.theme.greyColor};
+  font-weight: 600;
+`;
+
 const HomePresenter = ({ me, feeds }) => {
   return (
     <Wrapper>
       <Container>
+        <LeftNavigationWrapper>
+          <NavigationButton
+            to={`/profile/${me.id}`}
+            icon={<Avatar url={me.avatar} size="3.6rem" />}
+            text={me.username}
+          />
+        </LeftNavigationWrapper>
         <FeedWrapper>
           <CreatePostFeed {...me} />
           {feeds && feeds.map(feed => <PostFeed key={feed.id} {...feed} />)}
         </FeedWrapper>
+        <RightNavigationWrapper>
+          <NavigtaionTitle>Contacts</NavigtaionTitle>
+          {me &&
+            me.friends &&
+            me.friends.map(friend =>
+              <NavigationButton
+                key={friend.id}
+                to={`/profile/${friend.id}`}
+                icon={<Avatar url={friend.avatar} size="3.6rem" />}
+                text={friend.username}
+              />
+            )}
+        </RightNavigationWrapper>
       </Container>
     </Wrapper>
   );

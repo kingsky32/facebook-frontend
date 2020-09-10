@@ -3,12 +3,13 @@ import { Logo, Home, Watch, Groups, Gamming, Message, Notifications } from "../I
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faPlus, faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import useInput from "../../Hooks/useInput";
 import { connect } from "react-redux";
 import HeaderNavigatorButton from "./HeaderNavigatorButton";
 import CircleButton from "../CircleButton";
 import InputRound from "../InputRound";
+import Avatar from "../Avatar";
 
 const Container = styled.header`
   display: flex;
@@ -18,6 +19,7 @@ const Container = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 500;
 `;
 
 const HeaderLeft = styled.div`
@@ -72,12 +74,6 @@ const Profile = styled(Link)`
   }
 `;
 
-const Avatar = styled.img`
-  width: 2.8rem;
-  height: 2.8rem;
-  border-radius: 2.8rem;
-`;
-
 const Username = styled.span`
   font-size: 1.5rem;
   padding: 0 .5rem;
@@ -89,16 +85,19 @@ const EInputRound = styled(InputRound)`
   padding-left: 3.8rem;
 `;
 
-const Header = ({ facebook: { me } }) => {
+const Header = ({ facebook: { me }, history }) => {
   const search = useInput();
-
+  const onSubmit = e => {
+    e.preventDefault();
+    history.push(`/search/${search.value}`);
+  };
   return (
     <Container>
       <HeaderLeft>
         <Link to="/">
           <Logo />
         </Link>
-        <SearchForm>
+        <SearchForm onSubmit={onSubmit}>
           <SearchIcon>
             <FontAwesomeIcon icon={faSearch} size="lg" />
           </SearchIcon>
@@ -118,8 +117,8 @@ const Header = ({ facebook: { me } }) => {
         </NavigatorWrapper>
       </HeaderCenter>
       <HeaderRight>
-        <Profile to={`/${me.id}`}>
-          <Avatar src={me.avatar} />
+        <Profile to={`/profile/${me.id}`}>
+          <Avatar url={me.avatar} size="2.8rem" />
           <Username>
             {me.username}
           </Username>
@@ -137,4 +136,4 @@ const mapStateToProps = state => {
   return { facebook: state };
 };
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(withRouter(Header));
