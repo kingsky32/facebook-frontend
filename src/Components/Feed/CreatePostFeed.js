@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import InputHome from "../InputRound";
+import InputRound from "../InputRound";
 import PropTypes from "prop-types";
+import CreatePostFeedButton from "./CreatePostFeedButton";
+import { LiveVideo, Photo, Feeling } from "../Icons";
 
 const Container = styled.div`
   ${props => props.theme.feedBox};
@@ -30,19 +32,49 @@ const Avatar = styled.img`
   height: 100%;
 `;
 
+const ButtonArea = styled.div`
+  display: flex;
+  margin-top: 1rem;
+`;
+
+const EInputRound = styled(InputRound)`
+  cursor: pointer;
+`;
+
 const CreatePostFeed = ({ id, avatar, username }) => {
+  const onClickCreatePost = () => {
+    console.log("Create New Post");
+  };
   return (
     <Container>
       <InputArea>
         <ELink to={`/${id}`}>
           <Avatar src={avatar} />
         </ELink>
-        <InputHome
+        <EInputRound
           value=""
           onChange={() => null}
+          onClick={onClickCreatePost}
           placeholder={`What's on your mind, ${username}?`}
         />
       </InputArea>
+      <ButtonArea>
+        <CreatePostFeedButton
+          onClick={() => null}
+          icon={<LiveVideo size="2.4rem" />}
+          text="Live Video"
+        />
+        <CreatePostFeedButton
+          onClick={() => null}
+          icon={<Photo size="2.4rem" />}
+          text="Photo/Video"
+        />
+        <CreatePostFeedButton
+          onClick={() => null}
+          icon={<Feeling size="2.4rem" />}
+          text="Feeling/Activity"
+        />
+      </ButtonArea>
     </Container>
   );
 };

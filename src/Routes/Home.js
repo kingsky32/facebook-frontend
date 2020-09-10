@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 const Wrapper = styled.div`
   width: 100%;
   min-height: 100vh;
-  padding-top: 6rem;
+  padding-top: 7.5rem;
   box-sizing: border-box;
   background-color: ${props => props.theme.lightGreyColor};
 `;
