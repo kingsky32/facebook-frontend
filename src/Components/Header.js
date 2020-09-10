@@ -102,7 +102,23 @@ const Navigator = styled.li`
   }
 `;
 
-const NavigationInfo = styled.span`display: none;`;
+const NavigationInfo = styled.span`
+  display: block;
+  position: absolute;
+  color: ${props => props.theme.bgColor};
+  background-color: ${props => props.theme.blackColor};
+  padding: .8rem 1rem;
+  font-size: 1.2rem;
+  border-radius: ${props => props.theme.borderRadius};
+  opacity: 0;
+  pointer-events: none;
+  bottom: -3.5rem;
+  transition: .25s opacity ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+  &.show {
+    opacity: .75;
+  }
+`;
 
 const HeaderRight = styled.div`
   flex: 1;
@@ -158,6 +174,15 @@ const Button = styled.div`
 const Header = ({ history }) => {
   const search = useInput();
   const { data, loading } = useQuery(ME);
+
+  const onMouseEnter = e => {
+    e.target.querySelector("span") && e.target.querySelector("span").classList.add("show");
+  };
+
+  const onMouseLeave = e => {
+    e.target.querySelector("span") && e.target.querySelector("span").classList.remove("show");
+  };
+
   return (
     <Container>
       <HeaderLeft>
@@ -174,25 +199,25 @@ const Header = ({ history }) => {
       <HeaderCenter>
         <NavigatorWrapper>
           <Navigator className={history.location.pathname === "/" && "active"}>
-            <Link to="/">
+            <Link to="/" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
               <Home />
               <NavigationInfo>Home</NavigationInfo>
             </Link>
           </Navigator>
           <Navigator className={history.location.pathname === "/watch" && "active"}>
-            <Link to="/watch">
+            <Link to="/watch" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
               <Watch />
               <NavigationInfo>Watch</NavigationInfo>
             </Link>
           </Navigator>
           <Navigator className={history.location.pathname === "/groups" && "active"}>
-            <Link to="/groups">
+            <Link to="/groups" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
               <Groups />
               <NavigationInfo>Groups</NavigationInfo>
             </Link>
           </Navigator>
           <Navigator className={history.location.pathname === "/gamming" && "active"}>
-            <Link to="/gamming">
+            <Link to="/gamming" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
               <Gamming />
               <NavigationInfo>Gamming</NavigationInfo>
             </Link>
@@ -209,19 +234,19 @@ const Header = ({ history }) => {
               {data.me.username}
             </Username>
           </Profile>}
-        <Button>
+        <Button onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
           <FontAwesomeIcon icon={faPlus} size="lg" />
           <NavigationInfo>Create</NavigationInfo>
         </Button>
-        <Button>
+        <Button onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
           <Message />
           <NavigationInfo>Messenger</NavigationInfo>
         </Button>
-        <Button>
+        <Button onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
           <Notifications />
           <NavigationInfo>Notifications</NavigationInfo>
         </Button>
-        <Button>
+        <Button onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
           <FontAwesomeIcon icon={faCaretDown} size="2x" />
           <NavigationInfo>Account</NavigationInfo>
         </Button>
