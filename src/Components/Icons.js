@@ -1,5 +1,6 @@
 import React from "react";
 import icons from "../Assets/Images/icons.png";
+import icons2 from "../Assets/Images/icons2.png";
 import styled from "styled-components";
 
 const Icons = styled.i`
@@ -7,6 +8,17 @@ const Icons = styled.i`
   height: ${props => props.size};
   background-image: url(${icons});
   background-size: 3.7rem 49.4rem;
+  background-repeat: no-repeat;
+  display: inline-block;
+`;
+
+const Icons2 = styled.i`
+  width: ${props => props.size};
+  height: ${props => props.size};
+  background-image: url(${icons2});
+  background-size: 25px 1242px;
+  background-repeat: no-repeat;
+  display: inline-block;
   background-repeat: no-repeat;
   display: inline-block;
 `;
@@ -21,6 +33,18 @@ const PhotoIcon = styled(Icons)`
 
 const FeelingIcon = styled(Icons)`
   background-position: 0 -87px;
+`;
+
+const LikeIcon = styled(Icons2)`
+  background-position: 0 -288px;
+`;
+
+const CommentIcon = styled(Icons2)`
+  background-position: 0 -212px;
+`;
+
+const ShareIcon = styled(Icons2)`
+  background-position: 0 -344px;
 `;
 
 export const Logo = ({ size = 40 }) =>
@@ -73,3 +97,9 @@ export const LiveVideo = ({ size = "2rem" }) => <LiveVideoIcon size={size} />;
 export const Photo = ({ size = "2rem" }) => <PhotoIcon size={size} />;
 
 export const Feeling = ({ size = "2rem" }) => <FeelingIcon size={size} />;
+
+export const Like = ({ size = "2rem" }) => <LikeIcon size={size} />;
+
+export const Comment = ({ size = "2rem" }) => <CommentIcon size={size} />;
+
+export const Share = ({ size = "2rem" }) => <ShareIcon size={size} />;
