@@ -4,6 +4,7 @@ import CreatePostFeed from "../../Components/Feed/CreatePostFeed";
 import PostFeed from "../../Components/Feed/PostFeed";
 import NavigationButton from "../../Components/Navigation/NavigationButton";
 import Avatar from "../../Components/Avatar";
+import NoMorePosts from "../../Components/Feed/NoMorePosts";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -62,6 +63,7 @@ const HomePresenter = ({ me, feeds }) => {
         <FeedWrapper>
           <CreatePostFeed {...me} />
           {feeds && feeds.map(feed => <PostFeed key={feed.id} {...feed} />)}
+          <NoMorePosts />
         </FeedWrapper>
         <RightNavigationWrapper>
           <NavigtaionTitle>Contacts</NavigtaionTitle>

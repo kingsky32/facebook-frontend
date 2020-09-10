@@ -1,5 +1,5 @@
 import React from "react";
-import { Logo, Home, Watch, Groups, Gamming, Message, Notifications } from "../Icons";
+import { Logo, Home, Watch, Groups, Gamming, Message, Notifications, Friends } from "../Icons";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faPlus, faCaretDown } from "@fortawesome/free-solid-svg-icons";
@@ -49,6 +49,8 @@ const HeaderCenter = styled.div`flex: 1;`;
 
 const NavigatorWrapper = styled.ul`
   display: flex;
+  width: 68rem;
+  flex: 0 0 68rem;
   height: 100%;
   justify-content: center;
   box-sizing: border-box;
@@ -111,6 +113,7 @@ const Header = ({ facebook: { me }, history }) => {
       <HeaderCenter>
         <NavigatorWrapper>
           <HeaderNavigatorButton icon={<Home />} to="/" info="Home" />
+          <HeaderNavigatorButton icon={<Friends />} to="/friends" info="Friends" />
           <HeaderNavigatorButton icon={<Watch />} to="/watch" info="Watch" />
           <HeaderNavigatorButton icon={<Groups />} to="/groups" info="Groups" />
           <HeaderNavigatorButton icon={<Gamming />} to="/gamming" info="Gamming" />
