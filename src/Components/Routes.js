@@ -16,7 +16,6 @@ import { ME } from "../ShardQueries";
 import Groups from "../Routes/Groups";
 import Watch from "../Routes/Watch";
 import Gamming from "../Routes/Gamming";
-import GlobalStyles from "../Styles/GlobalStyles";
 import AuthGlobalStyles from "../Styles/AuthGlobalStyles";
 
 const LoggedInRoutes = ({ me }) => {
