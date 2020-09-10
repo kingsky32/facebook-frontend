@@ -1,5 +1,5 @@
 import React from "react";
-import { Logo, Home, Watch, Groups, Gamming, Message, Alarm } from "./Icons";
+import { Logo, Home, Watch, Groups, Gamming, Message, Notifications } from "./Icons";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faPlus, faCaretDown } from "@fortawesome/free-solid-svg-icons";
@@ -136,7 +136,7 @@ const Username = styled.span`
   font-weight: 700;
 `;
 
-const Button = styled(Link)`
+const Button = styled.div`
   width: 4rem;
   height: 4rem;
   display: flex;
@@ -145,6 +145,7 @@ const Button = styled(Link)`
   background-color: ${props => props.theme.lightGreyColor};
   border-radius: 4rem;
   transition: .25s background-color ease;
+  cursor: pointer;
   &:not(:last-child) {
     margin-right: 1rem;
   }
@@ -214,15 +215,15 @@ const Header = ({ history }) => {
         </Button>
         <Button>
           <Message />
-          <NavigationInfo>Create</NavigationInfo>
+          <NavigationInfo>Messenger</NavigationInfo>
         </Button>
         <Button>
-          <Alarm />
-          <NavigationInfo>Create</NavigationInfo>
+          <Notifications />
+          <NavigationInfo>Notifications</NavigationInfo>
         </Button>
         <Button>
           <FontAwesomeIcon icon={faCaretDown} size="2x" />
-          <NavigationInfo>Create</NavigationInfo>
+          <NavigationInfo>Account</NavigationInfo>
         </Button>
       </HeaderRight>
     </Container>

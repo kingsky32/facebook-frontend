@@ -5,6 +5,7 @@ import Button from "../../Components/Button";
 import Logo from "../../Assets/Images/logo.svg";
 import Input from "../../Components/Input";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const Wrapper = styled.div`background-color: ${props => props.theme.lightGreyColor};`;
 
@@ -63,7 +64,7 @@ const ELink = styled(Link)`
   }
 `;
 
-export default ({ onSubmit, email, password }) =>
+const LoginPresenter = ({ onSubmit, email, password }) =>
   <Wrapper>
     <Container>
       <Helmet>
@@ -88,3 +89,11 @@ export default ({ onSubmit, email, password }) =>
       </FormWrapper>
     </Container>
   </Wrapper>;
+
+LoginPresenter.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  email: PropTypes.object.isRequired,
+  password: PropTypes.object.isRequired
+};
+
+export default LoginPresenter;

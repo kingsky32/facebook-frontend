@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
   display: flex;
@@ -142,6 +143,16 @@ const ModalSignUp = ({
       </Container>
     </Wrapper>
   );
+};
+
+ModalSignUp.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  username: PropTypes.object.isRequired,
+  firstName: PropTypes.object.isRequired,
+  lastName: PropTypes.object.isRequired,
+  email: PropTypes.object.isRequired,
+  password: PropTypes.object.isRequired,
+  onToggleSignUp: PropTypes.func.isRequired
 };
 
 export default ModalSignUp;

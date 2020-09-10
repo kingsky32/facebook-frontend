@@ -6,6 +6,7 @@ import Logo from "../../Assets/Images/logo.svg";
 import Input from "../../Components/Input";
 import { Link } from "react-router-dom";
 import ModalSignUp from "../../Components/ModalSignUp";
+import PropTypes from "prop-types";
 
 const Wrapper = styled.div`background-color: ${props => props.theme.lightGreyColor};`;
 
@@ -76,7 +77,7 @@ const EButton = styled(Button)`
   }
 `;
 
-export default ({
+const AuthPresenter = ({
   username,
   firstName,
   lastName,
@@ -123,3 +124,16 @@ export default ({
         onToggleSignUp={onToggleSignUp}
       />}
   </Wrapper>;
+
+AuthPresenter.propTypes = {
+  username: PropTypes.object.isRequired,
+  firstName: PropTypes.object.isRequired,
+  lastName: PropTypes.object.isRequired,
+  email: PropTypes.object.isRequired,
+  password: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  isSignUp: PropTypes.bool.isRequired,
+  onToggleSignUp: PropTypes.func.isRequired
+};
+
+export default AuthPresenter;
