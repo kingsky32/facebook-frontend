@@ -13,6 +13,9 @@ import { connect } from "react-redux";
 import { me } from "../store";
 import { useQuery } from "react-apollo-hooks";
 import { ME } from "../ShardQueries";
+import Groups from "../Routes/Groups";
+import Watch from "../Routes/Watch";
+import Gamming from "../Routes/Gamming";
 
 const LoggedInRoutes = ({ me }) => {
   const { data, loading } = useQuery(ME);
@@ -29,6 +32,9 @@ const LoggedInRoutes = ({ me }) => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/search" component={Search} />
+        <Route path="/watch" component={Watch} />
+        <Route path="/groups" component={Groups} />
+        <Route path="/gamming" component={Gamming} />
         <Route path="/:id" component={Profile} />
         <Redirect from="*" to="/" />
       </Switch>
