@@ -7,7 +7,7 @@ import { withRouter, Link } from "react-router-dom";
 import Input from "./Input";
 import useInput from "../Hooks/useInput";
 import { useQuery } from "react-apollo-hooks";
-import { ME } from "../ShardQueries";
+import { connect } from "react-redux";
 
 const Container = styled.header`
   display: flex;
@@ -171,9 +171,8 @@ const Button = styled.div`
   }
 `;
 
-const Header = ({ history }) => {
+const Header = ({ history, facebook: { me } }) => {
   const search = useInput();
-  const { data, loading } = useQuery(ME);
 
   const onMouseEnter = e => {
     e.target.querySelector("span") && e.target.querySelector("span").classList.add("show");
@@ -225,15 +224,12 @@ const Header = ({ history }) => {
         </NavigatorWrapper>
       </HeaderCenter>
       <HeaderRight>
-        {!loading &&
-          data &&
-          data.me &&
-          <Profile to={`/${data.me.id}`}>
-            <Avatar src={data.me.avatar} />
-            <Username>
-              {data.me.username}
-            </Username>
-          </Profile>}
+        <Profile to={`/${me.id}`}>
+          <Avatar src={me.avatar} />
+          <Username>
+            {me.username}
+          </Username>
+        </Profile>
         <Button onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
           <FontAwesomeIcon icon={faPlus} size="lg" />
           <NavigationInfo>Create</NavigationInfo>
@@ -255,4 +251,8 @@ const Header = ({ history }) => {
   );
 };
 
-export default withRouter(Header);
+const mapStateToProps = state => {
+  return { facebook: state };
+};
+
+export default connect(mapStateToProps, null)(withRouter(Header));
