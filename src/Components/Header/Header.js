@@ -84,6 +84,11 @@ const Username = styled.span`
   font-weight: 700;
 `;
 
+const EInputRound = styled(InputRound)`
+  width: 24rem;
+  padding-left: 3.8rem;
+`;
+
 const Header = ({ facebook: { me } }) => {
   const search = useInput();
 
@@ -97,7 +102,7 @@ const Header = ({ facebook: { me } }) => {
           <SearchIcon>
             <FontAwesomeIcon icon={faSearch} size="lg" />
           </SearchIcon>
-          <InputRound
+          <EInputRound
             value={search.value}
             onChange={search.onChange}
             placeholder="Search Facebook"
