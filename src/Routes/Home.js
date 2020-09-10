@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import CreatePostFeed from "../Components/Feed/CreatePostFeed";
+import { connect } from "react-redux";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -17,16 +19,20 @@ const FeedWrapper = styled.div`
   margin: 0 auto;
 `;
 
-const CreateWrapper = styled.div``;
-
-export default () => {
+const Home = ({ facebook: { me } }) => {
   return (
     <Wrapper>
       <Container>
         <FeedWrapper>
-          <CreateWrapper>What's on your mind, data.me.username?</CreateWrapper>
+          <CreatePostFeed {...me} />
         </FeedWrapper>
       </Container>
     </Wrapper>
   );
 };
+
+const mapStateToProps = state => {
+  return { facebook: state };
+};
+
+export default connect(mapStateToProps)(Home);

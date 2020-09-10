@@ -6,7 +6,7 @@ import Login from "../Routes/Login";
 import Search from "../Routes/Search";
 import Profile from "../Routes/Profile";
 import Footer from "./Footer";
-import Header from "./Header";
+import Header from "./Header/Header";
 import { Helmet } from "react-helmet";
 import Favicon from "../Assets/favicon2.ico";
 import { connect } from "react-redux";
