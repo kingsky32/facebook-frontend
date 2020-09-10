@@ -4,24 +4,24 @@ Facebook clone with Express + Prisma + React + React Redux
 
 ## User Stories
 
-- Common
+- [ ] Common
   - [x] Header
   - [x] Footer
-- Auth
+- [ ]Auth
   - [x] Login Page
   - [x] Sign Up Popup
-- Search
-- Home
+- [ ] Search
+- [ ]Home
   - [ ] Create Feed
   - [ ] Feed
   - [x] Contacts
   - [x] No More Posts
-- Friends
-- Watch
-- Groups
-- Gamming
-- Profile
-- Messenger
-- Notifications
-- Account
-- ...more
+- [ ] Friends
+- [ ] Watch
+- [ ] Groups
+- [ ] Gamming
+- [ ] Profile
+- [ ] Messenger
+- [ ] Notifications
+- [ ] Account
+- [ ] ...more
