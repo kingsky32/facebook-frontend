@@ -7,7 +7,7 @@ Facebook clone with Express + Prisma + React + React Redux
 - [ ] Common
   - [x] Header
   - [x] Footer
-- [ ]Auth
+- [ ] Auth
   - [x] Login Page
   - [x] Sign Up Popup
 - [ ] Search
