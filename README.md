@@ -12,8 +12,8 @@ Facebook clone with Express + Prisma + React + React Redux
   - [x] Sign Up Popup
 - Search
 - Home
-  - [] Create Feed
-  - [] Feed
+  - [ ] Create Feed
+  - [ ] Feed
   - [x] Contacts
   - [x] No More Posts
 - Friends
