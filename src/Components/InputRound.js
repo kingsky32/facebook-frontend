@@ -13,6 +13,12 @@ const EInput = styled(Input)`
   font-size: 1.5rem;
   &:focus {
     box-shadow: 0 0 0 0;
+    &::placeholder {
+      color: ${props => props.theme.greyColor}75;
+    }
+  }
+  &::placeholder {
+    color: ${props => props.theme.greyColor}90;
   }
 `;
 

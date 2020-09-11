@@ -26,6 +26,8 @@ Facebook clone with Express + Prisma + React + React Redux
     - [ ] Create Feed
     - [x] Show Comments
     - [x] Add Comment
+    - [ ] Comment Like
+    - [ ] Comment Reply
     - [ ] Share Post
   - [ ] Group Conversations
 - [ ] Friends

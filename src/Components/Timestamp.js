@@ -19,7 +19,7 @@ export default ({ createdAt, className }) => {
   const date = new Date(createdAt);
   return (
     <Timestamp className={className}>
-      {timeAgo.format(date)}
+      {timeAgo.format(date, "time")}
     </Timestamp>
   );
 };

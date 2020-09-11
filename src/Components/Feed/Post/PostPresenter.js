@@ -144,7 +144,7 @@ const Button = styled.div`
   }
 `;
 
-const CommentArea = styled.div`padding: .7rem 1.5rem;`;
+const CommentsArea = styled.div`padding: .7rem 1.5rem;`;
 
 const CommentAvatar = styled(Avatar)`
   margin-right: .5rem;
@@ -166,6 +166,7 @@ const CommentTextBox = styled.div`
   border-radius: 1.5rem;
   background-color: ${props => props.theme.lightGreyColor};
   padding: .8rem 1.2rem;
+  margin-bottom: .4rem;
 `;
 
 const CommentName = styled.span`
@@ -177,6 +178,40 @@ const CommentText = styled.p`
   font-size: 1.5rem;
   font-weight: 400;
   margin-top: .25rem;
+`;
+
+const CommentArea = styled.div`padding-bottom: 1.5rem;`;
+
+const CommentMeta = styled.div`
+  display: flex;
+  font-size: 1.2rem;
+  align-items: center;
+  position: absolute;
+  margin-left: 1.2rem;
+`;
+
+const CommentLikeButton = styled.p`
+  margin-right: .5rem;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const CommentReplyButton = styled.p`
+  margin: 0 .5rem;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const CommentCreatedAt = styled(Timestamp)`
+  margin: 0 0 0 .5rem;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const PostPresneter = ({
@@ -243,7 +278,7 @@ const PostPresneter = ({
           <ButtonText>Share</ButtonText>
         </Button>
       </ButtonArea>
-      <CommentArea>
+      <CommentsArea>
         {comments &&
           comments.length > 0 &&
           <Comments>
@@ -252,16 +287,23 @@ const PostPresneter = ({
                 <Link to={`/profile/${comment.user.id}`}>
                   <CommentAvatar url={comment.user.avatar} size="3.2rem" />
                 </Link>
-                <CommentTextBox>
-                  <CommentName>
-                    <Link to={`/profile/${comment.user.id}`}>
-                      {comment.user.username}
-                    </Link>
-                  </CommentName>
-                  <CommentText>
-                    {comment.text}
-                  </CommentText>
-                </CommentTextBox>
+                <CommentArea>
+                  <CommentTextBox>
+                    <CommentName>
+                      <Link to={`/profile/${comment.user.id}`}>
+                        {comment.user.username}
+                      </Link>
+                    </CommentName>
+                    <CommentText>
+                      {comment.text}
+                    </CommentText>
+                  </CommentTextBox>
+                  <CommentMeta>
+                    <CommentLikeButton>Like</CommentLikeButton> ·
+                    <CommentReplyButton>Reply</CommentReplyButton> ·
+                    <CommentCreatedAt createdAt={comment.createdAt} />
+                  </CommentMeta>
+                </CommentArea>
               </Comment>
             )}
           </Comments>}
@@ -278,7 +320,7 @@ const PostPresneter = ({
               placeholder="Write a comment..."
             />
           </AddComent>}
-      </CommentArea>
+      </CommentsArea>
     </Container>
   );
 };
