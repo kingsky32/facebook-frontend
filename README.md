@@ -5,17 +5,29 @@ Facebook clone with Express + Prisma + React + React Redux
 ## User Stories
 
 - [ ] Common
-  - [x] Header
+  - [ ] Header
+    - [x] Header Layout
+    - [x] Search
+    - [ ] Header Active Button
   - [x] Footer
 - [ ] Auth
   - [x] Login Page
   - [x] Sign Up Popup
+  - [ ] Sign Up Page
+  - [ ] Find Account
 - [ ] Search
 - [ ] Home
-  - [ ] Create Feed
-  - [ ] Feed
+  - [x] Create a Story
   - [x] Contacts
   - [x] No More Posts
+  - [ ] Feed
+    - [x] Show Feed
+    - [ ] Create Feed
+    - [ ] Like Active
+    - [ ] Show Comments
+    - [ ] Add Comment
+    - [ ] Share Post
+  - [ ] Group Conversations
 - [ ] Friends
 - [ ] Watch
 - [ ] Groups
@@ -24,4 +36,6 @@ Facebook clone with Express + Prisma + React + React Redux
 - [ ] Messenger
 - [ ] Notifications
 - [ ] Account
+- [ ] Stories
+  - [ ] Stores
 - [ ] ...more

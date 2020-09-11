@@ -6,6 +6,7 @@ export default {
   lightDarkGreyColor: "#e4e6eb",
   lightGreyColor: "#eef0f3",
   blueColor: "#1877f2",
+  blueHoverColor: "#1871e6",
   darkGreenColor: "#36a420",
   greenColor: "#42b72a",
   borderRadius: ".6rem",

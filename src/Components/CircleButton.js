@@ -4,8 +4,8 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const Button = styled.div`
-  width: 4rem;
-  height: 4rem;
+  width: ${props => props.size};
+  height: ${props => props.size};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,7 +40,7 @@ const NavigationInfo = styled.span`
   }
 `;
 
-const CircleButton = ({ icon, info }) => {
+const CircleButton = ({ className, onClick, icon, info, size = "4rem" }) => {
   const onMouseEnter = e => {
     e.target.querySelector("span") && e.target.querySelector("span").classList.add("show");
   };
@@ -50,18 +50,27 @@ const CircleButton = ({ icon, info }) => {
   };
 
   return (
-    <Button onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+    <Button
+      className={className}
+      onClick={onClick}
+      onMouseEnter={info && onMouseEnter}
+      onMouseLeave={info && onMouseLeave}
+      size={size}
+    >
       {icon}
-      <NavigationInfo>
-        {info}
-      </NavigationInfo>
+      {info &&
+        <NavigationInfo>
+          {info}
+        </NavigationInfo>}
     </Button>
   );
 };
 
 CircleButton.propTypes = {
+  onClick: PropTypes.func,
+  size: PropTypes.string,
   icon: PropTypes.object.isRequired,
-  info: PropTypes.string.isRequired
+  info: PropTypes.string
 };
 
 export default withRouter(CircleButton);

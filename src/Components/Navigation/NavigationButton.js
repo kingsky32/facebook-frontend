@@ -30,10 +30,10 @@ const Text = styled.span`
   font-weight: 600;
 `;
 
-const NavigationButton = ({ to, icon, text }) => {
+const NavigationButton = ({ to, icon, text, onClick }) => {
   return (
     <Container>
-      <Link to={to}>
+      <Link to={to} onClick={onClick}>
         <Icon>
           {icon}
         </Icon>
@@ -48,7 +48,8 @@ const NavigationButton = ({ to, icon, text }) => {
 NavigationButton.propTypes = {
   to: PropTypes.string.isRequired,
   icon: PropTypes.object.isRequired,
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
+  onClick: PropTypes.func
 };
 
 export default NavigationButton;

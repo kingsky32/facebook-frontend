@@ -4,7 +4,7 @@ import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 
 TimeAgo.addLocale(en);
-const timeAgo = new TimeAgo("en-eu");
+const timeAgo = new TimeAgo("en_US");
 
 const Timestamp = styled.div`
   font-weight: 500;

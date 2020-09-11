@@ -34,13 +34,14 @@ const EAvatar = styled(Avatar)`
   }
 `;
 
-const Meta = styled.div`flex: 1;`;
+const Meta = styled.div`
+  flex: 1;
+  padding-top: .35rem;
+`;
 
 const Username = styled.span`
-  display: block;
   font-size: 1.5rem;
   font-weight: 700;
-  margin-top: .35rem;
   &:hover {
     text-decoration: underline;
   }
@@ -55,8 +56,12 @@ const Option = styled.div`
   width: 3.6rem;
   height: 3.6rem;
   border-radius: 3.6rem;
-  background-color: ${props => props.theme.lightGreyColor};
   cursor: pointer;
+  transition: .25s background-color ease;
+  &:hover {
+    transition-duration: 0s;
+    background-color: ${props => props.theme.lightGreyColor};
+  }
 `;
 
 const Icon = styled.img`
@@ -99,7 +104,7 @@ const LikeIcon = styled.img`
   height: 1.8rem;
   border-radius: 1.8rem;
   cursor: pointer;
-  margin-right: 1rem;
+  margin-right: .5rem;
 `;
 
 const ButtonArea = styled.div`

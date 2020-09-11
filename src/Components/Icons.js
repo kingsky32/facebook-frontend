@@ -47,6 +47,10 @@ const ShareIcon = styled(Icons2)`
   background-position: 0 -344px;
 `;
 
+const PlusIcon = styled(Icons)`
+  background-position: 0 -162px;
+`;
+
 export const Logo = ({ size = 40 }) =>
   <svg viewBox="0 0 36 36" fill="url(#gradient)" height={size} width={size}>
     <defs>
@@ -108,3 +112,5 @@ export const Like = ({ size = "2rem" }) => <LikeIcon size={size} />;
 export const Comment = ({ size = "2rem" }) => <CommentIcon size={size} />;
 
 export const Share = ({ size = "2rem" }) => <ShareIcon size={size} />;
+
+export const Plus = ({ size = "2.4rem" }) => <PlusIcon size={size} />;

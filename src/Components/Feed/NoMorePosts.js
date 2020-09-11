@@ -30,6 +30,9 @@ const Text = styled.div`
 const EButton = styled(Button)`
   line-height: 3.5rem;
   font-size: 1.5rem;
+  &:hover {
+    background-color: ${props => props.theme.blueHoverColor};
+  }
 `;
 
 const NoMorePosts = () => {

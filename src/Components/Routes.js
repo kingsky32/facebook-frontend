@@ -17,6 +17,8 @@ import Groups from "../Routes/Groups";
 import Watch from "../Routes/Watch";
 import Gamming from "../Routes/Gamming";
 import AuthGlobalStyles from "../Styles/AuthGlobalStyles";
+import { Friends } from "./Icons";
+import Create from "../Routes/Stories/Create";
 
 const LoggedInRoutes = ({ me }) => {
   const { data, loading } = useQuery(ME);
@@ -33,10 +35,12 @@ const LoggedInRoutes = ({ me }) => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/search/:term" component={Search} />
+        <Route path="/friends" component={Friends} />
         <Route path="/watch" component={Watch} />
         <Route path="/groups" component={Groups} />
         <Route path="/gamming" component={Gamming} />
         <Route path="/profile/:id" component={Profile} />
+        <Route path="/stories/create" component={Create} />
         <Redirect from="*" to="/" />
       </Switch>
     </>

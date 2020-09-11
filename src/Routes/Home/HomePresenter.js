@@ -6,6 +6,10 @@ import NavigationButton from "../../Components/Navigation/NavigationButton";
 import Avatar from "../../Components/Avatar";
 import NoMorePosts from "../../Components/Feed/NoMorePosts";
 import FriendsIcon from "../../Assets/Images/Icons/friends.png";
+import CreateAStory from "../../Components/Feed/CreateAStory";
+import CircleButton from "../../Components/CircleButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -42,12 +46,26 @@ const RightNavigationWrapper = styled(NavigationWrapper)`
   right: 0;
 `;
 
+const NavigtaionContainer = styled.div`
+  &:not(:last-child) {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid ${props => props.theme.greyColor}35;
+  }
+`;
+
 const NavigtaionTitle = styled.span`
   font-size: 1.7rem;
   display: block;
   padding: 2rem 0.8rem 1rem;
   color: ${props => props.theme.greyColor};
   font-weight: 600;
+`;
+
+const ECircleButton = styled(CircleButton)`
+  background-color: ${props => props.theme.lightDarkGreyColor};
+  &:hover {
+    background-color: ${props => props.theme.lightDarkGreyColor};
+  }
 `;
 
 const HomePresenter = ({ me, feeds }) => {
@@ -67,22 +85,34 @@ const HomePresenter = ({ me, feeds }) => {
           />
         </LeftNavigationWrapper>
         <FeedWrapper>
+          <CreateAStory />
           <CreatePostFeed {...me} />
           {feeds && feeds.map(feed => <PostFeed key={feed.id} {...feed} />)}
           <NoMorePosts />
         </FeedWrapper>
         <RightNavigationWrapper>
-          <NavigtaionTitle>Contacts</NavigtaionTitle>
           {me &&
             me.friends &&
-            me.friends.map(friend =>
-              <NavigationButton
-                key={friend.id}
-                to={`/profile/${friend.id}`}
-                icon={<Avatar url={friend.avatar} size="3.6rem" />}
-                text={friend.username}
-              />
-            )}
+            me.friends.length > 0 &&
+            <NavigtaionContainer>
+              <NavigtaionTitle>Contacts</NavigtaionTitle>
+              {me.friends.map(friend =>
+                <NavigationButton
+                  key={friend.id}
+                  to={`/profile/${friend.id}`}
+                  icon={<Avatar url={friend.avatar} size="3.6rem" />}
+                  text={friend.username}
+                />
+              )}
+            </NavigtaionContainer>}
+          <NavigtaionContainer>
+            <NavigtaionTitle>Group Conversations</NavigtaionTitle>
+            <NavigationButton
+              to={`/`}
+              icon={<ECircleButton icon={<FontAwesomeIcon icon={faPlus} size="lg" />} />}
+              text="Create New Group"
+            />
+          </NavigtaionContainer>
         </RightNavigationWrapper>
       </Container>
     </Wrapper>
