@@ -1,7 +1,7 @@
 import React from "react";
 import icons from "../Assets/Images/Icons/icons.png";
 import icons2 from "../Assets/Images/Icons/icons2.png";
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 const Icons = styled.i`
   width: ${props => props.size};
@@ -35,8 +35,26 @@ const FeelingIcon = styled(Icons)`
   background-position: 0 -87px;
 `;
 
+const LikeKeyframes = keyframes`
+  0% {
+    transform: scale(1) rotate(0);
+  }
+  50% {
+    transform: scale(1.15) rotate(-25deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+`;
+
+const LikeAnimation = props =>
+  css`
+    ${LikeKeyframes} .5s ease-out;
+  `;
+
 const LikeIcon = styled(Icons2)`
-  background-position: 0 -288px;
+  background-position: ${props => (props.isLiked ? `0 -250px` : `0 -288px`)};
+  animation: ${props => props.isLiked && LikeAnimation};
 `;
 
 const CommentIcon = styled(Icons2)`
@@ -107,7 +125,8 @@ export const Photo = ({ size = "2rem" }) => <PhotoIcon size={size} />;
 
 export const Feeling = ({ size = "2rem" }) => <FeelingIcon size={size} />;
 
-export const Like = ({ size = "2rem" }) => <LikeIcon size={size} />;
+export const Like = ({ size = "2rem", isLiked = false }) =>
+  <LikeIcon size={size} isLiked={isLiked} />;
 
 export const Comment = ({ size = "2rem" }) => <CommentIcon size={size} />;
 

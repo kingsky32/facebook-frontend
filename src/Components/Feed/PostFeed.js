@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Timestamp from "../Timestamp";
@@ -6,6 +6,8 @@ import EllipsisH from "../../Assets/Images/Icons/ellipsisH.png";
 import LikeIco from "../../Assets/Images/Icons/like.svg";
 import { Like, Comment, Share } from "../Icons";
 import Avatar from "../Avatar";
+import { useMutation } from "react-apollo-hooks";
+import { TOGGLE_LIKE } from "./PostQueries";
 
 const Container = styled.div`
   ${props => props.theme.feedBox};
@@ -112,6 +114,12 @@ const ButtonArea = styled.div`
   display: flex;
 `;
 
+const ButtonText = styled.span`
+  padding-left: .5rem;
+  font-size: 1.5rem;
+  color: ${props => props.theme.greyColor};
+`;
+
 const Button = styled.div`
   flex: 1;
   padding: .5rem;
@@ -126,17 +134,35 @@ const Button = styled.div`
   &:not(:last-child) {
     margin-right: 1rem;
   }
+  &.isLiked {
+    ${ButtonText} {
+      color: ${props => props.theme.blueColor};
+      font-weight: 600;
+    }
+  }
 `;
 
-const ButtonText = styled.span`
-  padding-left: .5rem;
-  font-size: 1.5rem;
-  color: ${props => props.theme.greyColor};
-`;
+const PostFeed = ({ id, caption, user, likeCount, isLiked, createdAt, files }) => {
+  const [isLikedS, setIsLikedS] = useState(isLiked);
+  const [likeCountS, setLikeCountS] = useState(likeCount);
+  const [toggleLikeMutation] = useMutation(TOGGLE_LIKE, {
+    variables: { postId: id }
+  });
+  const onToggleLike = async e => {
+    e.preventDefault();
+    if (isLikedS) {
+      setIsLikedS(false);
+      setLikeCountS(likeCountS - 1);
+    } else {
+      setIsLikedS(true);
+      setLikeCountS(likeCountS + 1);
+    }
+    await toggleLikeMutation();
+  };
 
-const PostFeed = ({ caption, user, likeCount, createdAt, files }) => {
   return (
     <Container>
+      {console.log(isLikedS)}
       <MetaArea>
         <AvatarLink to={`/profile/${user.id}`}>
           <EAvatar url={user.avatar} size="4rem" />
@@ -163,13 +189,13 @@ const PostFeed = ({ caption, user, likeCount, createdAt, files }) => {
         <LikeCountArea>
           <LikeIcon src={LikeIco} />
           <LikeCount>
-            {likeCount}
+            {likeCountS}
           </LikeCount>
         </LikeCountArea>
       </CountArea>
       <ButtonArea>
-        <Button>
-          <Like />
+        <Button onClick={onToggleLike} className={isLikedS && "isLiked"}>
+          <Like isLiked={isLikedS} />
           <ButtonText>Like</ButtonText>
         </Button>
         <Button>

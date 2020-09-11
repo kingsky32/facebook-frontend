@@ -22,8 +22,8 @@ Facebook clone with Express + Prisma + React + React Redux
   - [x] No More Posts
   - [ ] Feed
     - [x] Show Feed
+    - [x] Toggle Like
     - [ ] Create Feed
-    - [ ] Like Active
     - [ ] Show Comments
     - [ ] Add Comment
     - [ ] Share Post
