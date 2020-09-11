@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Timestamp from "../Timestamp";
-import EllipsisH from "../../Assets/Images/Icons/ellipsisH.png";
-import LikeIco from "../../Assets/Images/Icons/like.svg";
-import { Like, Comment, Share } from "../Icons";
-import Avatar from "../Avatar";
-import { useMutation } from "react-apollo-hooks";
-import { TOGGLE_LIKE } from "./PostQueries";
+import Timestamp from "../../Timestamp";
+import EllipsisH from "../../../Assets/Images/Icons/ellipsisH.png";
+import LikeIco from "../../../Assets/Images/Icons/like.svg";
+import { Like, Comment as CommentIcon, Share } from "../../Icons";
+import Avatar from "../../Avatar";
+import InputRound from "../../InputRound";
 
 const Container = styled.div`
   ${props => props.theme.feedBox};
@@ -112,6 +111,9 @@ const LikeIcon = styled.img`
 const ButtonArea = styled.div`
   padding: .5rem 1.5rem;
   display: flex;
+  &:not(:last-child) {
+    border-bottom: 1px solid ${props => props.theme.lightGreyColor};
+  }
 `;
 
 const ButtonText = styled.span`
@@ -142,27 +144,60 @@ const Button = styled.div`
   }
 `;
 
-const PostFeed = ({ id, caption, user, likeCount, isLiked, createdAt, files }) => {
-  const [isLikedS, setIsLikedS] = useState(isLiked);
-  const [likeCountS, setLikeCountS] = useState(likeCount);
-  const [toggleLikeMutation] = useMutation(TOGGLE_LIKE, {
-    variables: { postId: id }
-  });
-  const onToggleLike = async e => {
-    e.preventDefault();
-    if (isLikedS) {
-      setIsLikedS(false);
-      setLikeCountS(likeCountS - 1);
-    } else {
-      setIsLikedS(true);
-      setLikeCountS(likeCountS + 1);
-    }
-    await toggleLikeMutation();
-  };
+const CommentArea = styled.div`padding: .7rem 1.5rem;`;
 
+const CommentAvatar = styled(Avatar)`
+  margin-right: .5rem;
+`;
+
+const AddComent = styled.form`
+  display: flex;
+  align-items: center;
+`;
+
+const Comments = styled.ul`padding: .3rem 0;`;
+
+const Comment = styled.li`
+  display: flex;
+  margin-bottom: .5rem;
+`;
+
+const CommentTextBox = styled.div`
+  border-radius: 1.5rem;
+  background-color: ${props => props.theme.lightGreyColor};
+  padding: .8rem 1.2rem;
+`;
+
+const CommentName = styled.span`
+  font-size: 1.3rem;
+  font-weight: 600;
+`;
+
+const CommentText = styled.p`
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-top: .25rem;
+`;
+
+const PostPresneter = ({
+  id,
+  caption,
+  user,
+  likeCount,
+  isLiked,
+  createdAt,
+  files,
+  me,
+  onToggleLike,
+  addComment,
+  onAddComment,
+  comments,
+  isComment,
+  onOpenComment,
+  textInput
+}) => {
   return (
     <Container>
-      {console.log(isLikedS)}
       <MetaArea>
         <AvatarLink to={`/profile/${user.id}`}>
           <EAvatar url={user.avatar} size="4rem" />
@@ -185,21 +220,22 @@ const PostFeed = ({ id, caption, user, likeCount, isLiked, createdAt, files }) =
         {caption}
       </Caption>
       {files && files[0] && <Photo src={files[0].url} />}
-      <CountArea>
-        <LikeCountArea>
-          <LikeIcon src={LikeIco} />
-          <LikeCount>
-            {likeCountS}
-          </LikeCount>
-        </LikeCountArea>
-      </CountArea>
+      {likeCount > 0 &&
+        <CountArea>
+          <LikeCountArea>
+            <LikeIcon src={LikeIco} />
+            <LikeCount>
+              {likeCount}
+            </LikeCount>
+          </LikeCountArea>
+        </CountArea>}
       <ButtonArea>
-        <Button onClick={onToggleLike} className={isLikedS && "isLiked"}>
-          <Like isLiked={isLikedS} />
+        <Button onClick={onToggleLike} className={isLiked && "isLiked"}>
+          <Like isLiked={isLiked} />
           <ButtonText>Like</ButtonText>
         </Button>
-        <Button>
-          <Comment />
+        <Button onClick={onOpenComment}>
+          <CommentIcon />
           <ButtonText>Comment</ButtonText>
         </Button>
         <Button>
@@ -207,8 +243,44 @@ const PostFeed = ({ id, caption, user, likeCount, isLiked, createdAt, files }) =
           <ButtonText>Share</ButtonText>
         </Button>
       </ButtonArea>
+      <CommentArea>
+        {comments &&
+          comments.length > 0 &&
+          <Comments>
+            {comments.map(comment =>
+              <Comment key={comment.id}>
+                <Link to={`/profile/${comment.user.id}`}>
+                  <CommentAvatar url={comment.user.avatar} size="3.2rem" />
+                </Link>
+                <CommentTextBox>
+                  <CommentName>
+                    <Link to={`/profile/${comment.user.id}`}>
+                      {comment.user.username}
+                    </Link>
+                  </CommentName>
+                  <CommentText>
+                    {comment.text}
+                  </CommentText>
+                </CommentTextBox>
+              </Comment>
+            )}
+          </Comments>}
+        {isComment &&
+          <AddComent onSubmit={onAddComment}>
+            <Link to={`/profile/${me.id}`}>
+              <CommentAvatar url={me.avatar} size="3.2rem" />
+            </Link>
+            <InputRound
+              ref={textInput}
+              height="3.6rem"
+              value={addComment.value}
+              onChange={addComment.onChange}
+              placeholder="Write a comment..."
+            />
+          </AddComent>}
+      </CommentArea>
     </Container>
   );
 };
 
-export default PostFeed;
+export default PostPresneter;

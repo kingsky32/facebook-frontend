@@ -35,6 +35,11 @@ const ButtonArea = styled.div`
 
 const EInputRound = styled(InputRound)`
   cursor: pointer;
+  transition: .25s background-color ease;
+  &:hover {
+    transition-duration: 0s;
+    background-color: ${props => props.theme.lightDarkGreyColor};
+  }
 `;
 
 const CreatePostFeed = ({ id, avatar, username }) => {

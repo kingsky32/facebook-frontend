@@ -5,9 +5,9 @@ import PropTypes from "prop-types";
 
 const EInput = styled(Input)`
   flex: 1;
-  height: 4rem;
+  height: ${props => props.height};
   padding: 1rem;
-  border-radius: 4rem;
+  border-radius: ${props => props.height};;
   background-color: ${props => props.theme.lightGreyColor};
   border: 0;
   font-size: 1.5rem;
@@ -16,24 +16,32 @@ const EInput = styled(Input)`
   }
 `;
 
-const InputRound = ({
-  placeholder,
-  required = false,
-  value = "",
-  onChange,
-  className,
-  type = "text",
-  onClick
-}) =>
-  <EInput
-    className={className}
-    placeholder={placeholder}
-    required={required}
-    value={value}
-    onChange={onChange}
-    type={type}
-    onClick={onClick}
-  />;
+const InputRound = React.forwardRef(
+  (
+    {
+      placeholder,
+      required = false,
+      value = "",
+      onChange,
+      height = "4rem",
+      className,
+      type = "text",
+      onClick
+    },
+    ref
+  ) =>
+    <EInput
+      ref={ref}
+      className={className}
+      placeholder={placeholder}
+      required={required}
+      value={value}
+      onChange={onChange}
+      type={type}
+      onClick={onClick}
+      height={height}
+    />
+);
 
 InputRound.propTypes = {
   placeholder: PropTypes.string,
@@ -65,7 +73,8 @@ InputRound.propTypes = {
     "url",
     "week"
   ]),
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  height: PropTypes.string
 };
 
 export default InputRound;

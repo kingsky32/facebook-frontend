@@ -9,10 +9,10 @@ const Container = styled.div`
   align-items: center;
   padding: .8rem;
   border-radius: ${props => props.theme.borderRadius};
+  transition: .25s background-color ease;
   cursor: pointer;
   &:hover {
     transition-duration: 0s;
-    transition: .25s background-color ease;
     background-color: ${props => props.theme.lightGreyColor};
   }
 `;

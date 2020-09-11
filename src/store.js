@@ -21,10 +21,13 @@ const facebook = createSlice({
     },
     addFeed: (state, action) => {
       state.feeds.push(action.payload);
+    },
+    clearFeed: state => {
+      state.feeds.length = 0;
     }
   }
 });
 
-export const { me, addFeed } = facebook.actions;
+export const { me, addFeed, clearFeed } = facebook.actions;
 
 export default configureStore({ reducer: facebook.reducer });

@@ -16,24 +16,22 @@ const Container = styled.input`
   }
 `;
 
-const Input = ({
-  placeholder,
-  required = false,
-  value = "",
-  onChange,
-  className,
-  type = "text",
-  onClick
-}) =>
-  <Container
-    className={className}
-    placeholder={placeholder}
-    required={required}
-    value={value}
-    onChange={onChange}
-    onClick={onClick}
-    type={type}
-  />;
+const Input = React.forwardRef(
+  (
+    { placeholder, required = false, value = "", onChange, className, type = "text", onClick },
+    ref
+  ) =>
+    <Container
+      ref={ref}
+      className={className}
+      placeholder={placeholder}
+      required={required}
+      value={value}
+      onChange={onChange}
+      onClick={onClick}
+      type={type}
+    />
+);
 
 Input.propTypes = {
   placeholder: PropTypes.string,

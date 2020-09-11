@@ -9,7 +9,8 @@ const Container = styled.img`
   overflow: hidden;
 `;
 
-const Avatar = ({ url, size = "4rem" }) => <Container src={url} size={size} />;
+const Avatar = ({ className, url, size = "4rem" }) =>
+  <Container className={className} src={url} size={size} />;
 
 Avatar.propTypes = {
   url: PropTypes.string.isRequired,
