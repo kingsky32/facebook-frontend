@@ -98,6 +98,10 @@ const LikeCountArea = styled.div`
 const LikeCount = styled.span`
   font-size: 1.5rem;
   color: ${props => props.theme.greyColor};
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const LikeIcon = styled.img`
@@ -157,9 +161,18 @@ const AddComent = styled.form`
 
 const Comments = styled.ul`padding: .3rem 0;`;
 
+const CommentOption = styled(Option)`
+  align-self: center;
+  margin-left: .5rem;
+  opacity: 0;
+`;
+
 const Comment = styled.li`
   display: flex;
-  margin-bottom: .5rem;
+  margin-bottom: 2.2rem;
+  &:hover ${CommentOption} {
+    opacity: 1;
+  }
 `;
 
 const CommentTextBox = styled.div`
@@ -180,7 +193,7 @@ const CommentText = styled.p`
   margin-top: .25rem;
 `;
 
-const CommentArea = styled.div`padding-bottom: 1.5rem;`;
+const CommentArea = styled.div``;
 
 const CommentMeta = styled.div`
   display: flex;
@@ -278,49 +291,53 @@ const PostPresneter = ({
           <ButtonText>Share</ButtonText>
         </Button>
       </ButtonArea>
-      <CommentsArea>
-        {comments &&
-          comments.length > 0 &&
-          <Comments>
-            {comments.map(comment =>
-              <Comment key={comment.id}>
-                <Link to={`/profile/${comment.user.id}`}>
-                  <CommentAvatar url={comment.user.avatar} size="3.2rem" />
-                </Link>
-                <CommentArea>
-                  <CommentTextBox>
-                    <CommentName>
-                      <Link to={`/profile/${comment.user.id}`}>
-                        {comment.user.username}
-                      </Link>
-                    </CommentName>
-                    <CommentText>
-                      {comment.text}
-                    </CommentText>
-                  </CommentTextBox>
-                  <CommentMeta>
-                    <CommentLikeButton>Like</CommentLikeButton> ·
-                    <CommentReplyButton>Reply</CommentReplyButton> ·
-                    <CommentCreatedAt createdAt={comment.createdAt} />
-                  </CommentMeta>
-                </CommentArea>
-              </Comment>
-            )}
-          </Comments>}
-        {isComment &&
-          <AddComent onSubmit={onAddComment}>
-            <Link to={`/profile/${me.id}`}>
-              <CommentAvatar url={me.avatar} size="3.2rem" />
-            </Link>
-            <InputRound
-              ref={textInput}
-              height="3.6rem"
-              value={addComment.value}
-              onChange={addComment.onChange}
-              placeholder="Write a comment..."
-            />
-          </AddComent>}
-      </CommentsArea>
+      {((comments && comments.length > 0) || isComment) &&
+        <CommentsArea>
+          {comments &&
+            comments.length > 0 &&
+            <Comments>
+              {comments.map(comment =>
+                <Comment key={comment.id}>
+                  <Link to={`/profile/${comment.user.id}`}>
+                    <CommentAvatar url={comment.user.avatar} size="3.2rem" />
+                  </Link>
+                  <CommentArea>
+                    <CommentTextBox>
+                      <CommentName>
+                        <Link to={`/profile/${comment.user.id}`}>
+                          {comment.user.username}
+                        </Link>
+                      </CommentName>
+                      <CommentText>
+                        {comment.text}
+                      </CommentText>
+                    </CommentTextBox>
+                    <CommentMeta>
+                      <CommentLikeButton>Like</CommentLikeButton> ·
+                      <CommentReplyButton>Reply</CommentReplyButton> ·
+                      <CommentCreatedAt createdAt={comment.createdAt} />
+                    </CommentMeta>
+                  </CommentArea>
+                  <CommentOption>
+                    <Icon src={EllipsisH} />
+                  </CommentOption>
+                </Comment>
+              )}
+            </Comments>}
+          {isComment &&
+            <AddComent onSubmit={onAddComment}>
+              <Link to={`/profile/${me.id}`}>
+                <CommentAvatar url={me.avatar} size="3.2rem" />
+              </Link>
+              <InputRound
+                ref={textInput}
+                height="3.6rem"
+                value={addComment.value}
+                onChange={addComment.onChange}
+                placeholder="Write a comment..."
+              />
+            </AddComent>}
+        </CommentsArea>}
     </Container>
   );
 };

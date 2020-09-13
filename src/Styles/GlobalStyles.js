@@ -19,6 +19,13 @@ export default createGlobalStyle`
   input:focus{
     outline:none;
   }
+  textarea {
+    font: inherit;
+    border: none;
+    overflow: auto;
+    outline: none;
+    box-shadow: none;
+  }
   button {
     background: 0 0;
     border: 0;

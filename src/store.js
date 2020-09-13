@@ -20,7 +20,7 @@ const facebook = createSlice({
       action.payload.friends.forEach(friend => state.me.friends.push(friend));
     },
     addFeed: (state, action) => {
-      state.feeds.push(action.payload);
+      state.feeds.unshift(action.payload);
     },
     clearFeed: state => {
       state.feeds.length = 0;

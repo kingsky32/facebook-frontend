@@ -10,6 +10,7 @@ import CreateAStory from "../../Components/Feed/CreateAStory";
 import CircleButton from "../../Components/CircleButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import CreatePost from "../../Components/Feed/CreatePost";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -68,9 +69,10 @@ const ECircleButton = styled(CircleButton)`
   }
 `;
 
-const HomePresenter = ({ me, feeds }) => {
+const HomePresenter = ({ me, feeds, isCreatePost, onCreatePost, inputRef }) => {
   return (
     <Wrapper>
+      {isCreatePost && <CreatePost inputRef={inputRef} onCreatePost={onCreatePost} />}
       <Container>
         <LeftNavigationWrapper>
           <NavigationButton
@@ -86,7 +88,7 @@ const HomePresenter = ({ me, feeds }) => {
         </LeftNavigationWrapper>
         <FeedWrapper>
           <CreateAStory />
-          <CreatePostFeed {...me} />
+          <CreatePostFeed onCreatePost={onCreatePost} />
           {feeds && feeds.map(feed => <PostFeed key={feed.id} {...feed} />)}
           <NoMorePosts />
         </FeedWrapper>

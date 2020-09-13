@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import CreatePostFeedButton from "./CreatePostFeedButton";
 import { LiveVideo, Photo, Feeling } from "../Icons";
 import Avatar from "../Avatar";
+import { connect } from "react-redux";
 
 const Container = styled.div`
   ${props => props.theme.feedBox};
@@ -42,10 +43,7 @@ const EInputRound = styled(InputRound)`
   }
 `;
 
-const CreatePostFeed = ({ id, avatar, username }) => {
-  const onClickCreatePost = () => {
-    console.log("Create New Post");
-  };
+const CreatePostFeed = ({ facebook: { me: { id, avatar, username } }, onCreatePost }) => {
   return (
     <Container>
       <InputArea>
@@ -55,7 +53,7 @@ const CreatePostFeed = ({ id, avatar, username }) => {
         <EInputRound
           value=""
           onChange={() => null}
-          onClick={onClickCreatePost}
+          onClick={onCreatePost}
           placeholder={`What's on your mind, ${username}?`}
         />
       </InputArea>
@@ -81,9 +79,11 @@ const CreatePostFeed = ({ id, avatar, username }) => {
 };
 
 CreatePostFeed.propTypes = {
-  id: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired
+  onCreatePost: PropTypes.func.isRequired
 };
 
-export default CreatePostFeed;
+const mapStateToProps = state => {
+  return { facebook: state };
+};
+
+export default connect(mapStateToProps)(CreatePostFeed);

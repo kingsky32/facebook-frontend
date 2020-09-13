@@ -10,11 +10,16 @@ const Container = styled.button`
   line-height: 4.8rem;
   padding: 0 1.6rem;
   font-weight: 600;
+  &:disabled {
+    background: ${props => props.theme.lightGreyColor};
+    color: ${props => props.theme.lightDarkGreyColor};
+    cursor: not-allowed;
+  }
 `;
 
-const Button = ({ className, onClick, text }) => {
+const Button = ({ className, onClick, text, disabled = false }) => {
   return (
-    <Container className={className} onClick={onClick}>
+    <Container className={className} onClick={onClick} disabled={disabled}>
       {text}
     </Container>
   );
@@ -23,7 +28,8 @@ const Button = ({ className, onClick, text }) => {
 Button.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func,
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
+  disabled: PropTypes.bool
 };
 
 export default Button;
