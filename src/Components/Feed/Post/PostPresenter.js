@@ -7,6 +7,7 @@ import LikeIco from "../../../Assets/Images/Icons/like.svg";
 import { Like, Comment as CommentIcon, Share } from "../../Icons";
 import Avatar from "../../Avatar";
 import InputRound from "../../InputRound";
+import PostOption from "../PostOption";
 
 const Container = styled.div`
   ${props => props.theme.feedBox};
@@ -16,6 +17,7 @@ const Container = styled.div`
 
 const MetaArea = styled.div`
   padding: 1rem 1.5rem .5rem;
+  position: relative;
   display: flex;
 `;
 
@@ -62,6 +64,9 @@ const Option = styled.div`
   &:hover {
     transition-duration: 0s;
     background-color: ${props => props.theme.lightGreyColor};
+  }
+  > img {
+    pointer-events: none;
   }
 `;
 
@@ -242,7 +247,9 @@ const PostPresneter = ({
   comments,
   isComment,
   onOpenComment,
-  textInput
+  textInput,
+  isOption,
+  onPostOption
 }) => {
   return (
     <Container>
@@ -260,9 +267,10 @@ const PostPresneter = ({
             <Timestamp createdAt={createdAt} />
           </CreatedAt>
         </Meta>
-        <Option>
+        <Option onClick={onPostOption}>
           <Icon src={EllipsisH} />
         </Option>
+        {isOption && <PostOption id={id} user={user} onPostOption={onPostOption} />}
       </MetaArea>
       <Caption>
         {caption}

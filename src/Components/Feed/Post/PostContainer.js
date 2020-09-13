@@ -21,6 +21,7 @@ const PostContainer = ({
   const [likeCountS, setLikeCountS] = useState(likeCount);
   const [commentsS, setCommentsS] = useState(comments);
   const [isComment, setIsComment] = useState(false);
+  const [isOption, setIsOption] = useState(false);
   const [toggleLikeMutation] = useMutation(TOGGLE_LIKE, {
     variables: { postId: id }
   });
@@ -55,6 +56,11 @@ const PostContainer = ({
     }, 50);
   };
 
+  const onPostOption = e => {
+    e && e.preventDefault();
+    setIsOption(!isOption);
+  };
+
   return (
     <PostPresenter
       id={id}
@@ -72,6 +78,8 @@ const PostContainer = ({
       isComment={isComment}
       onOpenComment={onOpenComment}
       textInput={textInput}
+      isOption={isOption}
+      onPostOption={onPostOption}
     />
   );
 };
