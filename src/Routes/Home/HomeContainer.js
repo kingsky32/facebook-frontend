@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import HomePresenter from "./HomePresenter";
-import { addFeed, clearFeed } from "../../store";
+import { getFeed, clearFeed } from "../../store";
 import { useQuery } from "react-apollo-hooks";
 import { SEE_FEED } from "./HomeQueries";
 
-const HomeContainer = ({ facebook: { me, feeds }, addFeed, clearFeed }) => {
+const HomeContainer = ({ facebook: { me, feeds }, getFeed, clearFeed }) => {
   const { data, loading } = useQuery(SEE_FEED);
   const [isCreatePost, setIsCreatePost] = useState(false);
   const inputRef = useRef(null);
@@ -21,9 +21,9 @@ const HomeContainer = ({ facebook: { me, feeds }, addFeed, clearFeed }) => {
   useEffect(
     () => {
       clearFeed();
-      !loading && data && data.seeFeed && data.seeFeed.forEach(e => addFeed(e));
+      !loading && data && data.seeFeed && getFeed(data.seeFeed);
     },
-    [addFeed, data, loading, clearFeed]
+    [getFeed, data, loading, clearFeed]
   );
 
   return (
@@ -43,7 +43,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addFeed: feed => dispatch(addFeed(feed)),
+    getFeed: feed => dispatch(getFeed(feed)),
     clearFeed: () => dispatch(clearFeed())
   };
 };
