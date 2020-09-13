@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const Container = styled.button`
   background: ${props => props.theme.blueColor};
   border-radius: ${props => props.theme.borderRadius};
-  color: #fff;
+  color: ${props => props.theme.whiteColor};
   font-size: 2rem;
   line-height: 4.8rem;
   padding: 0 1.6rem;

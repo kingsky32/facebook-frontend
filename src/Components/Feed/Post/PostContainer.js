@@ -22,6 +22,7 @@ const PostContainer = ({
   const [commentsS, setCommentsS] = useState(comments);
   const [isComment, setIsComment] = useState(false);
   const [isOption, setIsOption] = useState(false);
+  const [isDeletePopup, setIsDeletePopup] = useState(false);
   const [toggleLikeMutation] = useMutation(TOGGLE_LIKE, {
     variables: { postId: id }
   });
@@ -61,6 +62,21 @@ const PostContainer = ({
     setIsOption(!isOption);
   };
 
+  const onClosePostOption = e => {
+    e && e.preventDefault();
+    setIsOption(false);
+  };
+
+  const onDeletePopup = e => {
+    onClosePostOption();
+    setIsDeletePopup(!isDeletePopup);
+  };
+
+  const onCloseDeletePopup = e => {
+    e && e.preventDefault();
+    setIsDeletePopup(false);
+  };
+
   return (
     <PostPresenter
       id={id}
@@ -68,6 +84,8 @@ const PostContainer = ({
       user={user}
       likeCount={likeCountS}
       isLiked={isLikedS}
+      isDeletePopup={isDeletePopup}
+      onDeletePopup={onDeletePopup}
       comments={commentsS}
       onAddComment={onAddComment}
       createdAt={createdAt}
@@ -80,6 +98,8 @@ const PostContainer = ({
       textInput={textInput}
       isOption={isOption}
       onPostOption={onPostOption}
+      onCloseDeletePopup={onCloseDeletePopup}
+      onClosePostOption={onClosePostOption}
     />
   );
 };

@@ -19,11 +19,3 @@ export const EDIT_POST = gql`
     }
   }
 `;
-
-export const DELETE_POST = gql`
-  mutation editPost($id: String!) {
-    editPost(id: $id, action: DELETE) {
-      id
-    }
-  }
-`;

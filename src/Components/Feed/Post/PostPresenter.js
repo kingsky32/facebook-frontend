@@ -8,6 +8,7 @@ import { Like, Comment as CommentIcon, Share } from "../../Icons";
 import Avatar from "../../Avatar";
 import InputRound from "../../InputRound";
 import PostOption from "../PostOption";
+import DeletePostPopup from "../DeletePostPopup";
 
 const Container = styled.div`
   ${props => props.theme.feedBox};
@@ -249,10 +250,14 @@ const PostPresneter = ({
   onOpenComment,
   textInput,
   isOption,
-  onPostOption
+  onPostOption,
+  isDeletePopup,
+  onDeletePopup,
+  onCloseDeletePopup
 }) => {
   return (
     <Container>
+      {isDeletePopup && <DeletePostPopup id={id} onCloseDeletePopup={onCloseDeletePopup} />}
       <MetaArea>
         <AvatarLink to={`/profile/${user.id}`}>
           <EAvatar url={user.avatar} size="4rem" />
@@ -270,7 +275,8 @@ const PostPresneter = ({
         <Option onClick={onPostOption}>
           <Icon src={EllipsisH} />
         </Option>
-        {isOption && <PostOption id={id} user={user} onPostOption={onPostOption} />}
+        {isOption &&
+          <PostOption user={user} onPostOption={onPostOption} onDeletePopup={onDeletePopup} />}
       </MetaArea>
       <Caption>
         {caption}
