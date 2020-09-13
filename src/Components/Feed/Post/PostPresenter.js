@@ -9,6 +9,7 @@ import Avatar from "../../Avatar";
 import InputRound from "../../InputRound";
 import PostOption from "../PostOption";
 import DeletePostPopup from "../DeletePostPopup";
+import EditPostPopup from "../EditPostPopup";
 
 const Container = styled.div`
   ${props => props.theme.feedBox};
@@ -253,10 +254,15 @@ const PostPresneter = ({
   onPostOption,
   isDeletePopup,
   onDeletePopup,
-  onCloseDeletePopup
+  onCloseDeletePopup,
+  onCloseEditPopup,
+  isEditPopup,
+  onEditPopup
 }) => {
   return (
     <Container>
+      {isEditPopup &&
+        <EditPostPopup id={id} beforeCaption={caption} onCloseEditPopup={onCloseEditPopup} />}
       {isDeletePopup && <DeletePostPopup id={id} onCloseDeletePopup={onCloseDeletePopup} />}
       <MetaArea>
         <AvatarLink to={`/profile/${user.id}`}>
@@ -276,7 +282,12 @@ const PostPresneter = ({
           <Icon src={EllipsisH} />
         </Option>
         {isOption &&
-          <PostOption user={user} onPostOption={onPostOption} onDeletePopup={onDeletePopup} />}
+          <PostOption
+            user={user}
+            onPostOption={onPostOption}
+            onDeletePopup={onDeletePopup}
+            onEditPopup={onEditPopup}
+          />}
       </MetaArea>
       <Caption>
         {caption}

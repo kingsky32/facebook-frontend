@@ -57,12 +57,12 @@ const OptionText = styled.span`
   font-weight: 500;
 `;
 
-const PostOptionPresenter = ({ me, user, onDeletePopup }) => {
+const PostOptionPresenter = ({ me, user, onDeletePopup, onEditPopup }) => {
   return (
     <Container>
       <Options>
         {me.id === user.id &&
-          <Option>
+          <Option onClick={onEditPopup}>
             <EditIcon />
             <OptionText>Edit post</OptionText>
           </Option>}

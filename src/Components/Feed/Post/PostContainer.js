@@ -22,6 +22,7 @@ const PostContainer = ({
   const [commentsS, setCommentsS] = useState(comments);
   const [isComment, setIsComment] = useState(false);
   const [isOption, setIsOption] = useState(false);
+  const [isEditPopup, setIsEditPopup] = useState(false);
   const [isDeletePopup, setIsDeletePopup] = useState(false);
   const [toggleLikeMutation] = useMutation(TOGGLE_LIKE, {
     variables: { postId: id }
@@ -72,9 +73,19 @@ const PostContainer = ({
     setIsDeletePopup(!isDeletePopup);
   };
 
+  const onEditPopup = e => {
+    onClosePostOption();
+    setIsEditPopup(!isEditPopup);
+  };
+
   const onCloseDeletePopup = e => {
     e && e.preventDefault();
     setIsDeletePopup(false);
+  };
+
+  const onCloseEditPopup = e => {
+    e && e.preventDefault();
+    setIsEditPopup(false);
   };
 
   return (
@@ -84,8 +95,6 @@ const PostContainer = ({
       user={user}
       likeCount={likeCountS}
       isLiked={isLikedS}
-      isDeletePopup={isDeletePopup}
-      onDeletePopup={onDeletePopup}
       comments={commentsS}
       onAddComment={onAddComment}
       createdAt={createdAt}
@@ -98,7 +107,12 @@ const PostContainer = ({
       textInput={textInput}
       isOption={isOption}
       onPostOption={onPostOption}
+      isDeletePopup={isDeletePopup}
+      onDeletePopup={onDeletePopup}
       onCloseDeletePopup={onCloseDeletePopup}
+      isEditPopup={isEditPopup}
+      onCloseEditPopup={onCloseEditPopup}
+      onEditPopup={onEditPopup}
       onClosePostOption={onClosePostOption}
     />
   );
