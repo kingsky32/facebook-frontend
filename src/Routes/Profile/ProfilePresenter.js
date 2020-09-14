@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import Avatar from "../../Components/Avatar";
+import Timeline from "../../Components/Profile/Timeline";
 
 const Wrapper = styled.div`padding-top: 6rem;`;
 
@@ -9,7 +10,6 @@ const Container = styled.div`width: 100%;`;
 
 const ProfileHead = styled.div`
   width: 100%;
-  height: 94rem;
   background-color: ${props => props.theme.whiteColor};
   margin: 0 auto;
 `;
@@ -69,12 +69,14 @@ const Bio = styled.span`
   font-weight: 500;
 `;
 
-const ProfilePresenter = ({ id, avatar, username, bio }) => {
+const ProfileComponent = styled.div`padding-top: 1.5rem;`;
+
+const ProfilePresenter = ({ id, avatar, friendsCount, fullName, bio, posts }) => {
   return (
     <Wrapper>
       <Helmet>
         <title>
-          {username} | Facebook
+          {fullName} | Facebook
         </title>
       </Helmet>
       <Container>
@@ -86,7 +88,7 @@ const ProfilePresenter = ({ id, avatar, username, bio }) => {
             </AvatarWrapper>
             <ProfileMeta>
               <UserName>
-                {username}
+                {fullName}
               </UserName>
               <Bio>
                 {bio}
@@ -94,6 +96,9 @@ const ProfilePresenter = ({ id, avatar, username, bio }) => {
             </ProfileMeta>
           </ProfileHeadWrapper>
         </ProfileHead>
+        <ProfileComponent>
+          <Timeline posts={posts} friendsCount={friendsCount} />
+        </ProfileComponent>
       </Container>
     </Wrapper>
   );

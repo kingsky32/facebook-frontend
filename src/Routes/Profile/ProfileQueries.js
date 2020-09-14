@@ -34,6 +34,16 @@ export const SEE_USER = gql`
         }
         isLiked
         likeCount
+        comments {
+          id
+          text
+          user {
+            id
+            avatar
+            username
+          }
+          createdAt
+        }
         commentCount
         createdAt
       }
