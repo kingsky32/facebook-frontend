@@ -6,7 +6,6 @@ const Container = styled.img`
   width: ${props => props.size};
   height: ${props => props.size};
   border-radius: ${props => props.size};
-  overflow: hidden;
 `;
 
 const Avatar = ({ className, url, size = "4rem" }) =>

@@ -70,9 +70,17 @@ const Profile = styled(Link)`
   border-radius: 3.6rem;
   transition: .25s background-color ease;
   margin-right: 1rem;
+  padding-right: .5rem;
   &:hover {
     transition-duration: 0s;
     background-color: ${props => props.theme.lightGreyColor};
+  }
+  &.active {
+    background-color: ${props => props.theme.blueColor}25;
+    color: ${props => props.theme.blueColor};
+    &:hover {
+      background-color: ${props => props.theme.blueHoverColor}45;
+    }
   }
 `;
 
@@ -89,6 +97,8 @@ const EInputRound = styled(InputRound)`
 
 const Header = ({ facebook: { me }, history }) => {
   const search = useInput();
+  const pathName = history.location.pathname;
+  const profileId = pathName.split("/")[pathName.split("/").length - 1];
   const onSubmit = e => {
     e.preventDefault();
     history.push(`/search/${search.value}`);
@@ -120,7 +130,7 @@ const Header = ({ facebook: { me }, history }) => {
         </NavigatorWrapper>
       </HeaderCenter>
       <HeaderRight>
-        <Profile to={`/profile/${me.id}`}>
+        <Profile to={`/profile/${me.id}`} className={profileId === me.id && "active"}>
           <Avatar url={me.avatar} size="2.8rem" />
           <Username>
             {me.username}
