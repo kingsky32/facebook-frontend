@@ -51,7 +51,7 @@ const FriendsCount = styled.span`
   color: ${props => props.theme.greyColor};
 `;
 
-const Timeline = ({ posts, friendsCount }) => {
+const Timeline = ({ posts, friendsCount, isSelf }) => {
   const [isCreatePost, setIsCreatePost] = useState(false);
   const inputRef = useRef(null);
   const onCreatePost = e => {
@@ -79,7 +79,7 @@ const Timeline = ({ posts, friendsCount }) => {
         </FriendsContainer>
       </MetaContainer>
       <PostsContainer>
-        <CreatePostFeed onCreatePost={onCreatePost} />
+        {isSelf && <CreatePostFeed onCreatePost={onCreatePost} />}
         {posts && posts.map(post => <PostFeed key={post.id} {...post} />)}
       </PostsContainer>
     </Container>

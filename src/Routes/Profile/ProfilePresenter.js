@@ -138,7 +138,7 @@ const OptionIcon = styled.img`
   }
 `;
 
-const ProfilePresenter = ({ avatar, friendsCount, fullName, bio, posts }) => {
+const ProfilePresenter = ({ isSelf, avatar, friendsCount, fullName, bio, posts }) => {
   return (
     <Wrapper>
       <Helmet>
@@ -184,25 +184,26 @@ const ProfilePresenter = ({ avatar, friendsCount, fullName, bio, posts }) => {
                   <Link to="">More</Link>
                 </Navigation>
               </ProfileNavigation>
-              <ProfileOption>
-                <Option>
-                  <OptionButton icon={<OptionIcon src={AddFriend} />} text="Add Friend" />
-                </Option>
-                <Option>
-                  <OptionButton icon={<OptionIcon src={Messenger} />} />
-                </Option>
-                <Option>
-                  <OptionButton icon={<OptionIcon src={Follow} />} />
-                </Option>
-                <Option>
-                  <OptionButton icon={<OptionIcon src={EllipsisH} />} />
-                </Option>
-              </ProfileOption>
+              {!isSelf &&
+                <ProfileOption>
+                  <Option>
+                    <OptionButton icon={<OptionIcon src={AddFriend} />} text="Add Friend" />
+                  </Option>
+                  <Option>
+                    <OptionButton icon={<OptionIcon src={Messenger} />} />
+                  </Option>
+                  <Option>
+                    <OptionButton icon={<OptionIcon src={Follow} />} />
+                  </Option>
+                  <Option>
+                    <OptionButton icon={<OptionIcon src={EllipsisH} />} />
+                  </Option>
+                </ProfileOption>}
             </ProfileNavigationContainer>
           </ProfileHeadWrapper>
         </ProfileHead>
         <ProfileComponent>
-          <Timeline posts={posts} friendsCount={friendsCount} />
+          <Timeline isSelf={isSelf} posts={posts} friendsCount={friendsCount} />
         </ProfileComponent>
       </Container>
     </Wrapper>

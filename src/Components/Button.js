@@ -11,6 +11,7 @@ const Container = styled.button`
   align-items: center;
   font-size: 2rem;
   padding: 0 1.6rem;
+  height: 4.8rem;
   font-weight: 600;
   &:disabled {
     background: ${props => props.theme.lightGreyColor};

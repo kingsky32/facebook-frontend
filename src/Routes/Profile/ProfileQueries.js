@@ -14,9 +14,12 @@ export const SEE_USER = gql`
       isSelf
       bio
       friends {
-        id
-        avatar
-        username
+        friend {
+          id
+          avatar
+          username
+        }
+        request
       }
       friendsCount
       posts {

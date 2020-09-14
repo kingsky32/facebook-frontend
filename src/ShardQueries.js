@@ -7,9 +7,11 @@ export const ME = gql`
       avatar
       username
       friends {
-        id
-        avatar
-        username
+        friend {
+          id
+          avatar
+          username
+        }
       }
     }
   }

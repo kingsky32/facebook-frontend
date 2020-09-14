@@ -17,7 +17,7 @@ const facebook = createSlice({
       state.me.id = action.payload.id;
       state.me.avatar = action.payload.avatar;
       state.me.username = action.payload.username;
-      action.payload.friends.forEach(friend => state.me.friends.push(friend));
+      action.payload.friends.forEach(friend => state.me.friends.push(friend.friend));
     },
     addFeed: (state, action) => {
       state.feeds.unshift(action.payload);
