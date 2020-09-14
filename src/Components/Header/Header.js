@@ -98,7 +98,7 @@ const EInputRound = styled(InputRound)`
 const Header = ({ facebook: { me }, history }) => {
   const search = useInput();
   const pathName = history.location.pathname;
-  const profileId = pathName.split("/")[pathName.split("/").length - 1];
+  const profileId = pathName.split("/")[2];
   const onSubmit = e => {
     e.preventDefault();
     history.push(`/search/${search.value}`);

@@ -1,8 +1,14 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Avatar from "../../Components/Avatar";
+import Button from "../../Components/Button";
 import Timeline from "../../Components/Profile/Timeline";
+import AddFriend from "../../Assets/Images/Icons/Profile/add_friend.png";
+import Messenger from "../../Assets/Images/Icons/Profile/messenger.png";
+import Follow from "../../Assets/Images/Icons/Profile/follow.png";
+import EllipsisH from "../../Assets/Images/Icons/ellipsisH.png";
 
 const Wrapper = styled.div`padding-top: 6rem;`;
 
@@ -69,9 +75,70 @@ const Bio = styled.span`
   font-weight: 500;
 `;
 
-const ProfileComponent = styled.div`padding-top: 1.5rem;`;
+const ProfileComponent = styled.div`
+  width: 88rem;
+  margin: 0 auto;
+  padding-top: 1.5rem;
+`;
 
-const ProfilePresenter = ({ id, avatar, friendsCount, fullName, bio, posts }) => {
+const ProfileNavigationContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 88rem;
+  margin: 0 auto;
+`;
+
+const ProfileNavigation = styled.ul`display: flex;`;
+
+const Navigation = styled.li`
+  &.active {
+    a {
+      border-bottom: 3px solid ${props => props.theme.blueColor};
+      color: ${props => props.theme.blueColor};
+    }
+  }
+  a {
+    display: block;
+    line-height: 6rem;
+    height: 6rem;
+    box-sizing: border-box;
+    padding: 0 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+`;
+
+const ProfileOption = styled.ul`display: flex;`;
+
+const Option = styled.li`
+  &:not(:last-child) {
+    margin-right: .8rem;
+  }
+`;
+
+const OptionButton = styled(Button)`
+  background-color: ${props => props.theme.greyColor}25;
+  color: ${props => props.theme.blackColor};
+  padding: 0 1.5rem;
+  height: 3.6rem;
+  font-size: 1.5rem;
+  transition: .25s background-color ease;
+  &:hover {
+    transition-duration: 0s;
+    background-color: ${props => props.theme.greyColor}40;
+  }
+`;
+
+const OptionIcon = styled.img`
+  width: 1.6rem;
+  height: 1.6rem;
+  &:not(:last-child) {
+    margin-right: .5rem;
+  }
+`;
+
+const ProfilePresenter = ({ avatar, friendsCount, fullName, bio, posts }) => {
   return (
     <Wrapper>
       <Helmet>
@@ -94,6 +161,44 @@ const ProfilePresenter = ({ id, avatar, friendsCount, fullName, bio, posts }) =>
                 {bio}
               </Bio>
             </ProfileMeta>
+            <ProfileNavigationContainer>
+              <ProfileNavigation>
+                <Navigation className="active">
+                  <Link to="">Timeline</Link>
+                </Navigation>
+                <Navigation>
+                  <Link to="">About</Link>
+                </Navigation>
+                <Navigation>
+                  <Link to="">
+                    Friends {friendsCount}
+                  </Link>
+                </Navigation>
+                <Navigation>
+                  <Link to="">Photos</Link>
+                </Navigation>
+                <Navigation>
+                  <Link to="">Videos</Link>
+                </Navigation>
+                <Navigation>
+                  <Link to="">More</Link>
+                </Navigation>
+              </ProfileNavigation>
+              <ProfileOption>
+                <Option>
+                  <OptionButton icon={<OptionIcon src={AddFriend} />} text="Add Friend" />
+                </Option>
+                <Option>
+                  <OptionButton icon={<OptionIcon src={Messenger} />} />
+                </Option>
+                <Option>
+                  <OptionButton icon={<OptionIcon src={Follow} />} />
+                </Option>
+                <Option>
+                  <OptionButton icon={<OptionIcon src={EllipsisH} />} />
+                </Option>
+              </ProfileOption>
+            </ProfileNavigationContainer>
           </ProfileHeadWrapper>
         </ProfileHead>
         <ProfileComponent>
