@@ -6,9 +6,9 @@ export const ADD_FRIEND = gql`
   }
 `;
 
-export const REQUEST_FRIEND = gql`
-  mutation requestFriend($id: String!, $friendId: String!) {
-    requestFriend(id: $id, friendId: $friendId)
+export const CONFIRM_FRIEND = gql`
+  mutation confirmFriend($id: String!) {
+    confirmFriend(id: $id)
   }
 `;
 

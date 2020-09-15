@@ -12,6 +12,7 @@ import EllipsisH from "../../Assets/Images/Icons/ellipsisH.png";
 import CancelRequest from "../../Assets/Images/Icons/Profile/cancel_request.png";
 import isFriendIcon from "../../Assets/Images/Icons/Profile/is_friend.png";
 import CallIcon from "../../Assets/Images/Icons/Profile/call.png";
+import RespondIcon from "../../Assets/Images/Icons/Profile/respond.png";
 
 const Wrapper = styled.div`padding-top: 6rem;`;
 
@@ -141,6 +142,18 @@ const OptionIcon = styled.img`
   }
 `;
 
+const RespondOptionButton = styled(OptionButton)`
+  background-color: ${props => props.theme.blueColor}25;
+  color: ${props => props.theme.blueColor};
+  &:hover {
+    background-color: ${props => props.theme.blueColor}40;
+  }
+`;
+
+const RespondOptionIcon = styled(OptionIcon)`
+  filter: opacity(.5) drop-shadow(0 0 0 ${props => props.theme.blueColor});
+`;
+
 const ProfilePresenter = ({
   isFriendState,
   isSelf,
@@ -149,7 +162,9 @@ const ProfilePresenter = ({
   fullName,
   bio,
   posts,
-  onAddFriend
+  onAddFriend,
+  isRequestFriend,
+  onConfirmFriend
 }) => {
   return (
     <Wrapper>
@@ -196,46 +211,67 @@ const ProfilePresenter = ({
                   <Link to="">More</Link>
                 </Navigation>
               </ProfileNavigation>
-              {!isSelf && isFriendState === 2
-                ? <ProfileOption>
-                    <Option>
-                      <OptionButton icon={<OptionIcon text="Message" src={Messenger} />} />
-                    </Option>
-                    <Option>
-                      <OptionButton icon={<OptionIcon src={CallIcon} />} />
-                    </Option>
-                    <Option>
-                      <OptionButton icon={<OptionIcon src={isFriendIcon} />} />
-                    </Option>
-                    <Option>
-                      <OptionButton icon={<OptionIcon src={EllipsisH} />} />
-                    </Option>
-                  </ProfileOption>
-                : !isSelf &&
-                  <ProfileOption>
-                    <Option>
-                      {isFriendState && isFriendState === 1
-                        ? <OptionButton
-                            icon={<OptionIcon src={CancelRequest} />}
-                            text="Cancel Request"
-                            onClick={onAddFriend}
-                          />
-                        : <OptionButton
-                            icon={<OptionIcon src={AddFriend} />}
-                            text="Add Friend"
-                            onClick={onAddFriend}
-                          />}
-                    </Option>
-                    <Option>
-                      <OptionButton icon={<OptionIcon src={Messenger} />} />
-                    </Option>
-                    <Option>
-                      <OptionButton icon={<OptionIcon src={Follow} />} />
-                    </Option>
-                    <Option>
-                      <OptionButton icon={<OptionIcon src={EllipsisH} />} />
-                    </Option>
-                  </ProfileOption>}
+              {!isSelf
+                ? isRequestFriend
+                  ? <ProfileOption>
+                      <Option>
+                        <RespondOptionButton
+                          icon={<RespondOptionIcon src={RespondIcon} />}
+                          text="Confirm"
+                          onClick={onConfirmFriend}
+                        />
+                      </Option>
+                      <Option>
+                        <OptionButton icon={<OptionIcon src={Messenger} />} />
+                      </Option>
+                      <Option>
+                        <OptionButton icon={<OptionIcon src={Follow} />} />
+                      </Option>
+                      <Option>
+                        <OptionButton icon={<OptionIcon src={EllipsisH} />} />
+                      </Option>
+                    </ProfileOption>
+                  : isFriendState === 2
+                    ? <ProfileOption>
+                        <Option>
+                          <OptionButton icon={<OptionIcon text="Message" src={Messenger} />} />
+                        </Option>
+                        <Option>
+                          <OptionButton icon={<OptionIcon src={CallIcon} />} />
+                        </Option>
+                        <Option>
+                          <OptionButton icon={<OptionIcon src={isFriendIcon} />} />
+                        </Option>
+                        <Option>
+                          <OptionButton icon={<OptionIcon src={EllipsisH} />} />
+                        </Option>
+                      </ProfileOption>
+                    : !isSelf &&
+                      <ProfileOption>
+                        <Option>
+                          {isFriendState && isFriendState === 1
+                            ? <OptionButton
+                                icon={<OptionIcon src={CancelRequest} />}
+                                text="Cancel Request"
+                                onClick={onAddFriend}
+                              />
+                            : <OptionButton
+                                icon={<OptionIcon src={AddFriend} />}
+                                text="Add Friend"
+                                onClick={onAddFriend}
+                              />}
+                        </Option>
+                        <Option>
+                          <OptionButton icon={<OptionIcon src={Messenger} />} />
+                        </Option>
+                        <Option>
+                          <OptionButton icon={<OptionIcon src={Follow} />} />
+                        </Option>
+                        <Option>
+                          <OptionButton icon={<OptionIcon src={EllipsisH} />} />
+                        </Option>
+                      </ProfileOption>
+                : null}
             </ProfileNavigationContainer>
           </ProfileHeadWrapper>
         </ProfileHead>

@@ -14,6 +14,13 @@ export const ME = gql`
         }
         request
       }
+      requestFriends {
+        id
+        opponent {
+          id
+          username
+        }
+      }
     }
   }
 `;
