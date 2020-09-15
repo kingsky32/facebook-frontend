@@ -95,10 +95,11 @@ const HomePresenter = ({ me, feeds, isCreatePost, onCreatePost, inputRef }) => {
         <RightNavigationWrapper>
           {me &&
             me.friends &&
-            me.friends.length > 0 &&
+            me.friends.friend &&
+            me.friends.friend.length > 0 &&
             <NavigtaionContainer>
               <NavigtaionTitle>Contacts</NavigtaionTitle>
-              {me.friends.map(friend =>
+              {me.friends.friend.map(friend =>
                 <NavigationButton
                   key={friend.id}
                   to={`/profile/${friend.id}`}

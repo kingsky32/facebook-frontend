@@ -1,5 +1,17 @@
 import { gql } from "apollo-boost";
 
+export const ADD_FRIEND = gql`
+  mutation addFriend($id: String!) {
+    addFriend(id: $id)
+  }
+`;
+
+export const REQUEST_FRIEND = gql`
+  mutation requestFriend($id: String!, $friendId: String!) {
+    requestFriend(id: $id, friendId: $friendId)
+  }
+`;
+
 export const SEE_USER = gql`
   query seeUser($id: String!) {
     seeUser(id: $id) {

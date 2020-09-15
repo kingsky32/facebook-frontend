@@ -12,6 +12,7 @@ export const ME = gql`
           avatar
           username
         }
+        request
       }
     }
   }
