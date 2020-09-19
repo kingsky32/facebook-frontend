@@ -81,7 +81,7 @@ const HomePresenter = ({ me, feeds, isCreatePost, onCreatePost, inputRef }) => {
             text={me.username}
           />
           <NavigationButton
-            to={`/profile/${me.id}`}
+            to={"/friends"}
             icon={<Avatar url={FriendsIcon} size="3.6rem" />}
             text="Friends"
           />

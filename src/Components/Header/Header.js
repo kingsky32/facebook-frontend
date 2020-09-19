@@ -1,5 +1,19 @@
 import React from "react";
-import { Logo, Home, Watch, Groups, Gamming, Message, Notifications, Friends } from "../Icons";
+import {
+  Logo,
+  Home,
+  Watch,
+  Groups,
+  Gamming,
+  Message,
+  Notifications,
+  Friends,
+  HomeOutline,
+  FriendsOutline,
+  WatchOutLine,
+  GroupsOutline,
+  GammingOutline
+} from "../Icons";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faPlus, faCaretDown } from "@fortawesome/free-solid-svg-icons";
@@ -122,11 +136,31 @@ const Header = ({ facebook: { me }, history }) => {
       </HeaderLeft>
       <HeaderCenter>
         <NavigatorWrapper>
-          <HeaderNavigatorButton icon={<Home />} to="/" info="Home" />
-          <HeaderNavigatorButton icon={<Friends />} to="/friends" info="Friends" />
-          <HeaderNavigatorButton icon={<Watch />} to="/watch" info="Watch" />
-          <HeaderNavigatorButton icon={<Groups />} to="/groups" info="Groups" />
-          <HeaderNavigatorButton icon={<Gamming />} to="/gamming" info="Gamming" />
+          <HeaderNavigatorButton icon={<Home />} iconOutline={<HomeOutline />} to="/" info="Home" />
+          <HeaderNavigatorButton
+            icon={<Friends />}
+            iconOutline={<FriendsOutline />}
+            to="/friends"
+            info="Friends"
+          />
+          <HeaderNavigatorButton
+            icon={<Watch />}
+            iconOutline={<WatchOutLine />}
+            to="/watch"
+            info="Watch"
+          />
+          <HeaderNavigatorButton
+            icon={<Groups />}
+            iconOutline={<GroupsOutline />}
+            to="/groups"
+            info="Groups"
+          />
+          <HeaderNavigatorButton
+            icon={<Gamming />}
+            iconOutline={<GammingOutline />}
+            to="/gamming"
+            info="Gamming"
+          />
         </NavigatorWrapper>
       </HeaderCenter>
       <HeaderRight>

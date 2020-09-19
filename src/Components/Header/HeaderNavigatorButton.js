@@ -61,7 +61,7 @@ const NavigationInfo = styled.span`
   }
 `;
 
-const HeaderNavigatorButton = ({ history, icon, to, info }) => {
+const HeaderNavigatorButton = ({ history, icon, iconOutline, to, info }) => {
   const onMouseEnter = e => {
     e.target.querySelector("span") && e.target.querySelector("span").classList.add("show");
   };
@@ -73,7 +73,7 @@ const HeaderNavigatorButton = ({ history, icon, to, info }) => {
   return (
     <Navigator className={history.location.pathname === to && "active"}>
       <Link to={to} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-        {icon}
+        {history.location.pathname === to ? icon : iconOutline}
         <NavigationInfo>
           {info}
         </NavigationInfo>

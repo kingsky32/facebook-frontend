@@ -17,8 +17,8 @@ import Groups from "../Routes/Groups";
 import Watch from "../Routes/Watch";
 import Gamming from "../Routes/Gamming";
 import AuthGlobalStyles from "../Styles/AuthGlobalStyles";
-import { Friends } from "./Icons";
 import Create from "../Routes/Stories/Create";
+import Friends from "../Routes/Friends";
 
 const LoggedInRoutes = ({ me }) => {
   const { data, loading } = useQuery(ME);
