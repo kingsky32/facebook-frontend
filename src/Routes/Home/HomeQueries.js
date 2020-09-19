@@ -28,6 +28,7 @@ export const SEE_FEED = gql`
         }
         createdAt
       }
+      commentCount
       createdAt
     }
   }

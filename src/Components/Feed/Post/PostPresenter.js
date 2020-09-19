@@ -234,6 +234,18 @@ const CommentCreatedAt = styled(Timestamp)`
   }
 `;
 
+const ViewAllComments = styled.span`
+  color: ${props => props.theme.greyColor};
+  font-size: 1.5rem;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 const PostPresneter = ({
   id,
   caption,
@@ -257,7 +269,8 @@ const PostPresneter = ({
   onCloseDeletePopup,
   onCloseEditPopup,
   isEditPopup,
-  onEditPopup
+  onEditPopup,
+  commentCount
 }) => {
   return (
     <Container>
@@ -321,6 +334,11 @@ const PostPresneter = ({
           {comments &&
             comments.length > 0 &&
             <Comments>
+              {commentCount > 1 &&
+                commentCount - comments.length !== 0 &&
+                <ViewAllComments>
+                  View {commentCount - 1} more Comment
+                </ViewAllComments>}
               {comments.map(comment =>
                 <Comment key={comment.id}>
                   <Link to={`/profile/${comment.user.id}`}>

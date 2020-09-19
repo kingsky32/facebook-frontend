@@ -14,7 +14,8 @@ const PostContainer = ({
   isLiked,
   createdAt,
   files,
-  comments
+  comments,
+  commentCount
 }) => {
   const textInput = useRef(null);
   const [isLikedS, setIsLikedS] = useState(isLiked);
@@ -114,6 +115,7 @@ const PostContainer = ({
       onCloseEditPopup={onCloseEditPopup}
       onEditPopup={onEditPopup}
       onClosePostOption={onClosePostOption}
+      commentCount={commentCount}
     />
   );
 };
