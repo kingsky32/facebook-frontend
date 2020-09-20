@@ -16,7 +16,7 @@ const LeftNavigationWrapper = styled.div`
   padding-top: 12.4rem;
   position: relative;
   box-sizing: border-box;
-  background-color: ${props => props.theme.whiteColor};
+  ${props => props.theme.boxShadow};
 `;
 
 const ContentWrapper = styled.div`
