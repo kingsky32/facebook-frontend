@@ -71,9 +71,9 @@ const HeaderNavigatorButton = ({ history, icon, iconOutline, to, info }) => {
   };
 
   return (
-    <Navigator className={history.location.pathname === to && "active"}>
+    <Navigator className={history.location.pathname.split("/")[1] === to.split("/")[1] && "active"}>
       <Link to={to} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-        {history.location.pathname === to ? icon : iconOutline}
+        {history.location.pathname.split("/")[1] === to.split("/")[1] ? icon : iconOutline}
         <NavigationInfo>
           {info}
         </NavigationInfo>
