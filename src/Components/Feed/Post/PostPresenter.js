@@ -234,6 +234,10 @@ const CommentCreatedAt = styled(Timestamp)`
   }
 `;
 
+const PostCreatedAt = styled(Timestamp)`
+  margin-top: .5rem;
+`;
+
 const ViewAllComments = styled.span`
   color: ${props => props.theme.greyColor};
   font-size: 1.5rem;
@@ -288,7 +292,7 @@ const PostPresneter = ({
             </Username>
           </Link>
           <CreatedAt>
-            <Timestamp createdAt={createdAt} />
+            <PostCreatedAt createdAt={createdAt} />
           </CreatedAt>
         </Meta>
         <Option onClick={onPostOption}>

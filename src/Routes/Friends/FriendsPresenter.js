@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import NullIcon from "../../Assets/Images/Icons/Friends/null_states_people_gray_wash.svg";
+import FriendRequests from "../../Components/Friends/FriendRequests";
+import Profile from "../Profile";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -10,8 +12,9 @@ const Wrapper = styled.div`
 const LeftNavigationWrapper = styled.div`
   width: 36rem;
   height: 100vh;
-  overflow: hidden;
-  padding-top: 6rem;
+  overflow-y: auto;
+  padding-top: 12.4rem;
+  position: relative;
   box-sizing: border-box;
   background-color: ${props => props.theme.whiteColor};
 `;
@@ -32,9 +35,14 @@ const ContentContainer = styled.div`
 `;
 
 const NavigationTitle = styled.h1`
+  width: 36rem;
+  box-sizing: border-box;
   font-size: 2.4rem;
   font-weight: 600;
   padding: 2rem 1rem;
+  background-color: ${props => props.theme.whiteColor};
+  position: fixed;
+  top: 6rem;
 `;
 
 const Content = styled.span`
@@ -52,18 +60,30 @@ const ContentIcon = styled.img`
   margin-bottom: 1.5rem;
 `;
 
-const FriendsPresenter = props => {
+const ProfileContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  margin-top: -6rem;
+`;
+
+const FriendsPresenter = ({ match }) => {
   return (
     <Wrapper>
       <LeftNavigationWrapper>
         <NavigationTitle>Friends</NavigationTitle>
+        <FriendRequests match={match} />
       </LeftNavigationWrapper>
       <ContentWrapper>
-        <ContentContainer>
-          <Content>
-            <ContentIcon src={NullIcon} alt="icon" />Select people's names to preview their profile.
-          </Content>
-        </ContentContainer>
+        {match.params.id !== "home"
+          ? <ProfileContainer>
+              <Profile match={match} />
+            </ProfileContainer>
+          : <ContentContainer>
+              <Content>
+                <ContentIcon src={NullIcon} alt="icon" />Select people's names to preview their
+                profile.
+              </Content>
+            </ContentContainer>}
       </ContentWrapper>
     </Wrapper>
   );

@@ -40,7 +40,7 @@ const NoMorePosts = () => {
     <Container>
       <Title>No More Posts</Title>
       <Text>Add more friends to see more posts in your News Feed.</Text>
-      <Link to="/friends">
+      <Link to="/friends/home">
         <EButton text="Find Friends" />
       </Link>
     </Container>

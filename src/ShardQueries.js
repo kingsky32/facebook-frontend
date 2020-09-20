@@ -18,8 +18,10 @@ export const ME = gql`
         id
         opponent {
           id
+          avatar
           username
         }
+        createdAt
       }
     }
   }

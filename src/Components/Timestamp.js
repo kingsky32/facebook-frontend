@@ -12,7 +12,6 @@ const Timestamp = styled.div`
   opacity: 0.5;
   display: block;
   font-size: 1rem;
-  margin-top: .5rem;
 `;
 
 export default ({ createdAt, className }) => {

@@ -140,7 +140,7 @@ const Header = ({ facebook: { me }, history }) => {
           <HeaderNavigatorButton
             icon={<Friends />}
             iconOutline={<FriendsOutline />}
-            to="/friends"
+            to="/friends/home"
             info="Friends"
           />
           <HeaderNavigatorButton

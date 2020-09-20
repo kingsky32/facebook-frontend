@@ -35,7 +35,7 @@ const LoggedInRoutes = ({ me }) => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/search/:term" component={Search} />
-        <Route path="/friends" component={Friends} />
+        <Route path="/friends/:id" component={Friends} />
         <Route path="/watch" component={Watch} />
         <Route path="/groups" component={Groups} />
         <Route path="/gamming" component={Gamming} />
