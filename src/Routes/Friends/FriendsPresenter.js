@@ -1,7 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import NullIcon from "../../Assets/Images/Icons/Friends/null_states_people_gray_wash.svg";
 import FriendRequests from "../../Components/Friends/FriendRequests";
+import FriendsButton from "../../Components/Friends/FriendsButton";
+import FriendsPeople from "../../Components/Friends/FriendsPeople";
+import { FriendAllFriends, FriendHome } from "../../Components/Icons";
 import Profile from "../Profile";
 
 const Wrapper = styled.div`
@@ -14,7 +18,10 @@ const LeftNavigationWrapper = styled.div`
   height: 100vh;
   overflow-y: auto;
   padding-top: 12.4rem;
-  position: relative;
+  padding: 12.4rem .8rem 0;
+  position: fixed;
+  top: 0;
+  left: 0;
   box-sizing: border-box;
   ${props => props.theme.boxShadow};
 `;
@@ -22,6 +29,7 @@ const LeftNavigationWrapper = styled.div`
 const ContentWrapper = styled.div`
   flex: 1;
   height: 100vh;
+  padding-left: 36rem;
   box-sizing: border-box;
   padding-top: 6rem;
 `;
@@ -35,7 +43,7 @@ const ContentContainer = styled.div`
 `;
 
 const NavigationTitle = styled.h1`
-  width: 36rem;
+  width: 23.6rem;
   box-sizing: border-box;
   font-size: 2.4rem;
   font-weight: 600;
@@ -66,12 +74,24 @@ const ProfileContainer = styled.div`
   margin-top: -6rem;
 `;
 
+const FriendsButtonContainer = styled.div`
+  padding-bottom: .8rem;
+  &:not(:last-child) {
+    border-bottom: 1px solid ${props => props.theme.lightGreyColor};
+  }
+`;
+
 const FriendsPresenter = ({ match }) => {
   return (
     <Wrapper>
       <LeftNavigationWrapper>
         <NavigationTitle>Friends</NavigationTitle>
+        <FriendsButtonContainer>
+          <FriendsButton to="/friends/home" icon={<FriendHome />} text="Home" match={match} />
+          <FriendsButton to="" icon={<FriendAllFriends />} text="All Friends" match={match} />
+        </FriendsButtonContainer>
         <FriendRequests match={match} />
+        <FriendsPeople match={match} />
       </LeftNavigationWrapper>
       <ContentWrapper>
         {match.params.id !== "home"

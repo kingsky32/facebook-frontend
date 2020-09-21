@@ -1,6 +1,7 @@
 import React from "react";
 import icons from "../Assets/Images/Icons/icons.png";
 import icons2 from "../Assets/Images/Icons/icons2.png";
+import iconsFriends from "../Assets/Images/Icons/Friends/icons-friends.png";
 import styled, { keyframes, css } from "styled-components";
 
 const Icons = styled.i`
@@ -19,6 +20,15 @@ const Icons2 = styled.i`
   background-size: 25px 1242px;
   background-repeat: no-repeat;
   display: inline-block;
+  background-repeat: no-repeat;
+  display: inline-block;
+`;
+
+const IconsFriend = styled.i`
+  width: ${props => props.size};
+  height: ${props => props.size};
+  background-image: url(${iconsFriends});
+  background-size: 25px 1213px;
   background-repeat: no-repeat;
   display: inline-block;
 `;
@@ -67,6 +77,14 @@ const ShareIcon = styled(Icons2)`
 
 const PlusIcon = styled(Icons)`
   background-position: 0 -162px;
+`;
+
+const FriendHomeIcon = styled(IconsFriend)`
+  background-position: 0 -398px;
+`;
+
+const AllFreindIcon = styled(IconsFriend)`
+  background-position: 0 -377px;
 `;
 
 export const Logo = ({ size = 40 }) =>
@@ -158,3 +176,7 @@ export const Comment = ({ size = "2rem" }) => <CommentIcon size={size} />;
 export const Share = ({ size = "2rem" }) => <ShareIcon size={size} />;
 
 export const Plus = ({ size = "2.4rem" }) => <PlusIcon size={size} />;
+
+export const FriendHome = ({ size = "2rem" }) => <FriendHomeIcon size={size} />;
+
+export const FriendAllFriends = ({ size = "2rem" }) => <AllFreindIcon size={size} />;

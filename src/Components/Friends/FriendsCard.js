@@ -5,8 +5,6 @@ import Avatar from "../Avatar";
 import Button from "../Button";
 import Timestamp from "../Timestamp";
 
-const Wrapper = styled.div`padding: 0 .8rem;`;
-
 const Container = styled.div`
   &.active {
     a {
@@ -75,27 +73,37 @@ const DeleteButton = styled(Button)`
   }
 `;
 
-const FriendsCard = ({ uid, avatar, username, createdAt, onConfirm, paramId }) => {
+const FriendsCard = ({
+  uid,
+  avatar,
+  username,
+  createdAt,
+  onConfirm,
+  onAddFriend,
+  onDelete,
+  onRemove,
+  paramId
+}) => {
   return (
-    <Wrapper>
-      <Container className={paramId === uid && "active"}>
-        <Link to={`/friends/${uid}`}>
-          <Avatar url={avatar} size="6rem" />
-          <MetaContainer>
-            <UsernameContainer>
-              <Username>
-                {username}
-              </Username>
-              <Timestamp createdAt={createdAt} />
-            </UsernameContainer>
-            <ButtonContainer>
-              <ConfirmButton text="Confirm" onClick={onConfirm} />
-              <DeleteButton text="Delete" />
-            </ButtonContainer>
-          </MetaContainer>
-        </Link>
-      </Container>
-    </Wrapper>
+    <Container className={paramId === uid && "active"}>
+      <Link to={`/friends/${uid}`}>
+        <Avatar url={avatar} size="6rem" />
+        <MetaContainer>
+          <UsernameContainer>
+            <Username>
+              {username}
+            </Username>
+            <Timestamp createdAt={createdAt} />
+          </UsernameContainer>
+          <ButtonContainer>
+            {onConfirm && <ConfirmButton text="Confirm" onClick={onConfirm} />}
+            {onAddFriend && <ConfirmButton text="Add Friend" onClick={onAddFriend} />}
+            {onDelete && <DeleteButton text="Delete" onClick={onDelete} />}
+            {onRemove && <DeleteButton text="Remove" onClick={onRemove} />}
+          </ButtonContainer>
+        </MetaContainer>
+      </Link>
+    </Container>
   );
 };
 
