@@ -80,7 +80,7 @@ const FriendsButtonContainer = styled.div`
   }
 `;
 
-const FriendsPresenter = ({ match }) => {
+const FriendsPresenter = ({ match, peopleData }) => {
   return (
     <Wrapper>
       <LeftNavigationWrapper>
@@ -90,7 +90,9 @@ const FriendsPresenter = ({ match }) => {
           <FriendsButton to="" icon={<FriendAllFriends />} text="All Friends" match={match} />
         </FriendsButtonContainer>
         <FriendRequests match={match} />
-        <FriendsPeople match={match} />
+        {peopleData &&
+          peopleData.peopleYouMayKnow &&
+          <FriendsPeople friends={peopleData.peopleYouMayKnow} match={match} />}
       </LeftNavigationWrapper>
       <ContentWrapper>
         {match.params.id !== "home"

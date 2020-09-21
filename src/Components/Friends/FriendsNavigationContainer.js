@@ -17,34 +17,13 @@ const Title = styled.span`
   margin-bottom: 1rem;
 `;
 
-const FriendsNavigationContainer = ({
-  title,
-  friends,
-  onConfirm,
-  onAddFriend,
-  onDelete,
-  onRemove,
-  paramId
-}) => {
+const FriendsNavigationContainer = ({ title, friends }) => {
   return (
     <Container>
       <Title>
         {title}
       </Title>
-      {friends.map(friend =>
-        <FriendsCard
-          key={friend.id}
-          paramId={paramId}
-          uid={friend.opponent.id}
-          avatar={friend.opponent.avatar}
-          username={friend.opponent.username}
-          createdAt={friend.createdAt}
-          onConfirm={onConfirm}
-          onAddFriend={onAddFriend}
-          onDelete={onDelete}
-          onRemove={onRemove}
-        />
-      )}
+      {friends}
     </Container>
   );
 };

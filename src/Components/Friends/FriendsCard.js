@@ -93,7 +93,7 @@ const FriendsCard = ({
             <Username>
               {username}
             </Username>
-            <Timestamp createdAt={createdAt} />
+            {createdAt && <Timestamp createdAt={createdAt} />}
           </UsernameContainer>
           <ButtonContainer>
             {onConfirm && <ConfirmButton text="Confirm" onClick={onConfirm} />}
