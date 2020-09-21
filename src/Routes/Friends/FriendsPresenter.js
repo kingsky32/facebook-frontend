@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import NullIcon from "../../Assets/Images/Icons/Friends/null_states_people_gray_wash.svg";
 import FriendRequests from "../../Components/Friends/FriendRequests";
