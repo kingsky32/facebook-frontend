@@ -87,7 +87,12 @@ const FriendsPresenter = ({ match, peopleData }) => {
         <NavigationTitle>Friends</NavigationTitle>
         <FriendsButtonContainer>
           <FriendsButton to="/friends/home" icon={<FriendHome />} text="Home" match={match} />
-          <FriendsButton to="" icon={<FriendAllFriends />} text="All Friends" match={match} />
+          <FriendsButton
+            to="/friends/list"
+            icon={<FriendAllFriends />}
+            text="All Friends"
+            match={match}
+          />
         </FriendsButtonContainer>
         <FriendRequests match={match} />
         {peopleData &&
@@ -95,16 +100,23 @@ const FriendsPresenter = ({ match, peopleData }) => {
           <FriendsPeople friends={peopleData.peopleYouMayKnow} match={match} />}
       </LeftNavigationWrapper>
       <ContentWrapper>
-        {match.params.id !== "home"
-          ? <ProfileContainer>
-              <Profile match={match} />
-            </ProfileContainer>
-          : <ContentContainer>
+        {match.params.id === "home"
+          ? <ContentContainer>
               <Content>
                 <ContentIcon src={NullIcon} alt="icon" />Select people's names to preview their
                 profile.
               </Content>
-            </ContentContainer>}
+            </ContentContainer>
+          : match.params.id === "list"
+            ? <ContentContainer>
+                <Content>
+                  <ContentIcon src={NullIcon} alt="icon" />Select people's names to preview their
+                  profile.
+                </Content>
+              </ContentContainer>
+            : <ProfileContainer>
+                <Profile match={match} />
+              </ProfileContainer>}
       </ContentWrapper>
     </Wrapper>
   );

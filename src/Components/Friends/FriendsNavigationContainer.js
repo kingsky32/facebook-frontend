@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import FriendsCard from "./FriendsCard";
 
 const Container = styled.div`
   padding: .8rem 0;
