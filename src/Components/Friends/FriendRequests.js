@@ -20,6 +20,7 @@ const FriendRequests = ({
             username={friend.opponent.username}
             createdAt={friend.createdAt}
             isFriend={friend.opponent.isFriend}
+            isRequestFriend={true}
           />
         )}
       />

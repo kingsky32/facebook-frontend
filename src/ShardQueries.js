@@ -19,6 +19,7 @@ export const ME = gql`
         avatar
         username
         isFriend
+        isRequestFriend
       }
       posts {
         id

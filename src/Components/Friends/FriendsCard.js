@@ -83,7 +83,8 @@ const FriendsCard = ({
   onDelete,
   onRemove,
   paramId,
-  isFriend
+  isFriend,
+  isRequestFriend
 }) => {
   return (
     <Container className={paramId === uid && "active"}>
@@ -96,12 +97,19 @@ const FriendsCard = ({
             </Username>
             {createdAt && <Timestamp createdAt={createdAt} />}
           </UsernameContainer>
-          <ButtonContainer>
-            {onConfirm && <ConfirmButton text="Confirm" onClick={onConfirm} />}
-            {onAddFriend && <ConfirmButton text="Add Friend" onClick={onAddFriend} />}
-            {onDelete && <DeleteButton text="Delete" onClick={onDelete} />}
-            {onRemove && <DeleteButton text="Remove" onClick={onRemove} />}
-          </ButtonContainer>
+          {isFriend === 1
+            ? <ButtonContainer>
+                <DeleteButton text="Cancel Request" onClick={onAddFriend} />
+              </ButtonContainer>
+            : isRequestFriend
+              ? <ButtonContainer>
+                  <ConfirmButton text="Confirm" onClick={onConfirm} />
+                  <DeleteButton text="Delete" onClick={onDelete} />
+                </ButtonContainer>
+              : <ButtonContainer>
+                  <ConfirmButton text="Add Friend" onClick={onAddFriend} />
+                  <DeleteButton text="Remove" onClick={onRemove} />
+                </ButtonContainer>}
         </MetaContainer>
       </Link>
     </Container>

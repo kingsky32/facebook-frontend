@@ -86,7 +86,7 @@ const FriendsPresenter = ({ match, peopleData }) => {
       <LeftNavigationWrapper>
         <NavigationTitle>Friends</NavigationTitle>
         <FriendsButtonContainer>
-          <FriendsButton to="/friends/home" icon={<FriendHome />} text="Home" match={match} />
+          <FriendsButton to="/friends/home/home" icon={<FriendHome />} text="Home" match={match} />
           <FriendsButton
             to="/friends/list/list"
             icon={<FriendAllFriends />}

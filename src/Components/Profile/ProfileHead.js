@@ -150,7 +150,7 @@ const ProfileHead = ({
   isSelf,
   isRequestFriend,
   onConfirmFriend,
-  isFriendState,
+  isFriend,
   onAddFriend,
   location: { pathname }
 }) => {
@@ -213,7 +213,7 @@ const ProfileHead = ({
                     <OptionButton icon={<OptionIcon src={EllipsisH} />} />
                   </Option>
                 </ProfileOption>
-              : isFriendState === 2
+              : isFriend === 2
                 ? <ProfileOption>
                     <Option>
                       <OptionButton icon={<OptionIcon text="Message" src={Messenger} />} />
@@ -231,7 +231,7 @@ const ProfileHead = ({
                 : !isSelf &&
                   <ProfileOption>
                     <Option>
-                      {isFriendState && isFriendState === 1
+                      {isFriend && isFriend === 1
                         ? <OptionButton
                             icon={<OptionIcon src={CancelRequest} />}
                             text="Cancel Request"

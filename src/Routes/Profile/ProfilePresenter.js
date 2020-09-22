@@ -18,7 +18,7 @@ const ProfileComponent = styled.div`
 `;
 
 const ProfilePresenter = ({
-  isFriendState,
+  isFriend,
   isSelf,
   avatar,
   friendsCount,
@@ -47,7 +47,7 @@ const ProfilePresenter = ({
           isSelf={isSelf}
           isRequestFriend={isRequestFriend}
           onConfirmFriend={onConfirmFriend}
-          isFriendState={isFriendState}
+          isFriend={isFriend}
           onAddFriend={onAddFriend}
         />
         <ProfileComponent>

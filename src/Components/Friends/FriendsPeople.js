@@ -17,6 +17,7 @@ const FriendsPeople = ({ friends, match: { params: { id: paramId } } }) => {
             username={friend.username}
             createdAt={friend.createdAt}
             isFriend={friend.isFriend}
+            isRequestFriend={friend.isRequestFriend}
           />
         )}
       />
