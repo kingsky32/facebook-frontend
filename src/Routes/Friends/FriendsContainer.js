@@ -1,11 +1,13 @@
 import React from "react";
-import { useQuery } from "react-apollo-hooks";
+import { connect } from "react-redux";
 import FriendsPresenter from "./FriendsPresenter";
-import { PEOPLE_YOU_MAY_KNOW } from "./FriendsQueries";
 
-const FriendsContainer = ({ match }) => {
-  const { data } = useQuery(PEOPLE_YOU_MAY_KNOW);
-  return <FriendsPresenter peopleData={data} match={match} />;
+const FriendsContainer = ({ match, facebook: { me } }) => {
+  return <FriendsPresenter peopleData={me.peopleYouMayKnow} match={match} />;
 };
 
-export default FriendsContainer;
+const mapStateToProps = state => {
+  return { facebook: state };
+};
+
+export default connect(mapStateToProps)(FriendsContainer);

@@ -82,11 +82,12 @@ const FriendsCard = ({
   onAddFriend,
   onDelete,
   onRemove,
-  paramId
+  paramId,
+  isFriend
 }) => {
   return (
     <Container className={paramId === uid && "active"}>
-      <Link to={`/friends/${uid}`}>
+      <Link to={`/friends/${uid}/timeline`}>
         <Avatar url={avatar} size="6rem" />
         <MetaContainer>
           <UsernameContainer>

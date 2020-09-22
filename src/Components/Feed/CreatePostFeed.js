@@ -47,7 +47,7 @@ const CreatePostFeed = ({ facebook: { me: { id, avatar, username } }, onCreatePo
   return (
     <Container>
       <InputArea>
-        <ELink to={`/profile/${id}`}>
+        <ELink to={`/profile/${id}/timeline`}>
           <Avatar url={avatar} size="4rem" />
         </ELink>
         <EInputRound

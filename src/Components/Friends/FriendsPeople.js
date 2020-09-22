@@ -16,8 +16,7 @@ const FriendsPeople = ({ friends, match: { params: { id: paramId } } }) => {
             avatar={friend.avatar}
             username={friend.username}
             createdAt={friend.createdAt}
-            onAddFriend={() => null}
-            onRemove={() => null}
+            isFriend={friend.isFriend}
           />
         )}
       />

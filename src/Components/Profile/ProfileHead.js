@@ -10,7 +10,7 @@ import CallIcon from "../../Assets/Images/Icons/Profile/call.png";
 import RespondIcon from "../../Assets/Images/Icons/Profile/respond.png";
 import Avatar from "../../Components/Avatar";
 import Button from "../../Components/Button";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -151,8 +151,10 @@ const ProfileHead = ({
   isRequestFriend,
   onConfirmFriend,
   isFriendState,
-  onAddFriend
+  onAddFriend,
+  location: { pathname }
 }) => {
+  const path = pathname.split("/").splice(0, 3).join("/");
   return (
     <Container>
       <ProfileHeadWrapper>
@@ -170,22 +172,22 @@ const ProfileHead = ({
         </ProfileMeta>
         <ProfileNavigationContainer>
           <ProfileNavigation>
-            <Navigation className="active">
-              <Link to="">Timeline</Link>
+            <Navigation className={pathname === `${path}/timeline` && "active"}>
+              <Link to={`${path}/timeline`}>Timeline</Link>
             </Navigation>
-            <Navigation>
-              <Link to="">About</Link>
+            <Navigation className={pathname === `${path}/about` && "active"}>
+              <Link to={`${path}/about`}>About</Link>
             </Navigation>
-            <Navigation>
-              <Link to="">
+            <Navigation className={pathname === `${path}/friends` && "active"}>
+              <Link to={`${path}/friends`}>
                 Friends {friendsCount}
               </Link>
             </Navigation>
-            <Navigation>
-              <Link to="">Photos</Link>
+            <Navigation className={pathname === `${path}/photos` && "active"}>
+              <Link to={`${path}/photos`}>Photos</Link>
             </Navigation>
-            <Navigation>
-              <Link to="">Videos</Link>
+            <Navigation className={pathname === `${path}/videos` && "active"}>
+              <Link to={`${path}/videos`}>Videos</Link>
             </Navigation>
             <Navigation>
               <Link to="">More</Link>
@@ -258,4 +260,4 @@ const ProfileHead = ({
   );
 };
 
-export default ProfileHead;
+export default withRouter(ProfileHead);

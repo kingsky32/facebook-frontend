@@ -34,6 +34,7 @@ export const SEE_USER = gql`
         request
       }
       friendsCount
+      isRequestFriend
       posts {
         id
         location

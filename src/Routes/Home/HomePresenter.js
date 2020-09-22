@@ -76,7 +76,7 @@ const HomePresenter = ({ me, feeds, isCreatePost, onCreatePost, inputRef }) => {
       <Container>
         <LeftNavigationWrapper>
           <NavigationButton
-            to={`/profile/${me.id}`}
+            to={`/profile/${me.id}/timeline`}
             icon={<Avatar url={me.avatar} size="3.6rem" />}
             text={me.username}
           />
@@ -102,7 +102,7 @@ const HomePresenter = ({ me, feeds, isCreatePost, onCreatePost, inputRef }) => {
               {me.friends.friend.map(friend =>
                 <NavigationButton
                   key={friend.id}
-                  to={`/profile/${friend.id}`}
+                  to={`/profile/${friend.id}/timeline`}
                   icon={<Avatar url={friend.avatar} size="3.6rem" />}
                   text={friend.username}
                 />

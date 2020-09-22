@@ -282,11 +282,11 @@ const PostPresneter = ({
         <EditPostPopup id={id} beforeCaption={caption} onCloseEditPopup={onCloseEditPopup} />}
       {isDeletePopup && <DeletePostPopup id={id} onCloseDeletePopup={onCloseDeletePopup} />}
       <MetaArea>
-        <AvatarLink to={`/profile/${user.id}`}>
+        <AvatarLink to={`/profile/${user.id}/timeline`}>
           <EAvatar url={user.avatar} size="4rem" />
         </AvatarLink>
         <Meta>
-          <Link to={`/profile/${user.id}`}>
+          <Link to={`/profile/${user.id}/timeline`}>
             <Username>
               {user.username}
             </Username>
@@ -345,13 +345,13 @@ const PostPresneter = ({
                 </ViewAllComments>}
               {comments.map(comment =>
                 <Comment key={comment.id}>
-                  <Link to={`/profile/${comment.user.id}`}>
+                  <Link to={`/profile/${comment.user.id}/timeline`}>
                     <CommentAvatar url={comment.user.avatar} size="3.2rem" />
                   </Link>
                   <CommentArea>
                     <CommentTextBox>
                       <CommentName>
-                        <Link to={`/profile/${comment.user.id}`}>
+                        <Link to={`/profile/${comment.user.id}/timeline`}>
                           {comment.user.username}
                         </Link>
                       </CommentName>
@@ -373,7 +373,7 @@ const PostPresneter = ({
             </Comments>}
           {isComment &&
             <AddComent onSubmit={onAddComment}>
-              <Link to={`/profile/${me.id}`}>
+              <Link to={`/profile/${me.id}/timeline`}>
                 <CommentAvatar url={me.avatar} size="3.2rem" />
               </Link>
               <InputRound

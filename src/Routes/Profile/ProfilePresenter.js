@@ -6,7 +6,10 @@ import Timeline from "../../Components/Profile/Timeline";
 
 const Wrapper = styled.div`padding-top: 6rem;`;
 
-const Container = styled.div`width: 100%;`;
+const Container = styled.div`
+  width: 100%;
+  padding-bottom: 2rem;
+`;
 
 const ProfileComponent = styled.div`
   width: 88rem;
@@ -22,9 +25,11 @@ const ProfilePresenter = ({
   fullName,
   bio,
   posts,
+  friends,
   onAddFriend,
   isRequestFriend,
-  onConfirmFriend
+  onConfirmFriend,
+  cate
 }) => {
   return (
     <Wrapper>
@@ -46,7 +51,13 @@ const ProfilePresenter = ({
           onAddFriend={onAddFriend}
         />
         <ProfileComponent>
-          <Timeline isSelf={isSelf} posts={posts} friendsCount={friendsCount} />
+          {cate === "timeline" &&
+            <Timeline
+              isSelf={isSelf}
+              posts={posts}
+              friends={friends}
+              friendsCount={friendsCount}
+            />}
         </ProfileComponent>
       </Container>
     </Wrapper>

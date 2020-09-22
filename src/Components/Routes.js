@@ -35,11 +35,11 @@ const LoggedInRoutes = ({ me }) => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/search/:term" component={Search} />
-        <Route path="/friends/:id" component={Friends} />
+        <Route path="/friends/:id/:cate" component={Friends} />
         <Route path="/watch" component={Watch} />
         <Route path="/groups" component={Groups} />
         <Route path="/gamming" component={Gamming} />
-        <Route path="/profile/:id" component={Profile} />
+        <Route path="/profile/:id/:cate" component={Profile} />
         <Route path="/stories/create" component={Create} />
         <Redirect from="*" to="/" />
       </Switch>
@@ -64,7 +64,7 @@ const Routes = ({ isLoggedIn, me }) =>
 
 const mapDispatchToProps = dispatch => {
   return {
-    me: text => dispatch(me(text))
+    me: data => dispatch(me(data))
   };
 };
 

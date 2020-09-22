@@ -140,7 +140,7 @@ const Header = ({ facebook: { me }, history }) => {
           <HeaderNavigatorButton
             icon={<Friends />}
             iconOutline={<FriendsOutline />}
-            to="/friends/home"
+            to="/friends/home/home"
             info="Friends"
           />
           <HeaderNavigatorButton
@@ -164,7 +164,7 @@ const Header = ({ facebook: { me }, history }) => {
         </NavigatorWrapper>
       </HeaderCenter>
       <HeaderRight>
-        <Profile to={`/profile/${me.id}`} className={profileId === me.id && "active"}>
+        <Profile to={`/profile/${me.id}/timeline`} className={profileId === me.id && "active"}>
           <Avatar url={me.avatar} size="2.8rem" />
           <Username>
             {me.username}

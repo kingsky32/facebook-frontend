@@ -88,16 +88,14 @@ const FriendsPresenter = ({ match, peopleData }) => {
         <FriendsButtonContainer>
           <FriendsButton to="/friends/home" icon={<FriendHome />} text="Home" match={match} />
           <FriendsButton
-            to="/friends/list"
+            to="/friends/list/list"
             icon={<FriendAllFriends />}
             text="All Friends"
             match={match}
           />
         </FriendsButtonContainer>
         <FriendRequests match={match} />
-        {peopleData &&
-          peopleData.peopleYouMayKnow &&
-          <FriendsPeople friends={peopleData.peopleYouMayKnow} match={match} />}
+        {peopleData && <FriendsPeople friends={peopleData} match={match} />}
       </LeftNavigationWrapper>
       <ContentWrapper>
         {match.params.id === "home"

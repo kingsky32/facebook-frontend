@@ -19,8 +19,7 @@ const FriendRequests = ({
             avatar={friend.opponent.avatar}
             username={friend.opponent.username}
             createdAt={friend.createdAt}
-            onConfirm={() => null}
-            onDelete={() => null}
+            isFriend={friend.opponent.isFriend}
           />
         )}
       />
