@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-apollo-hooks";
 import ProfilePresenter from "./ProfilePresenter";
 import { ADD_FRIEND, SEE_USER, CONFIRM_FRIEND } from "./ProfileQueries";
 import { toast } from "react-toastify";
+import { connect } from "react-redux";
+import { toggleFriend } from "../../store";
 
-const ProfileContainer = ({ match: { params: { id, cate } } }) => {
+const ProfileContainer = ({ match: { params: { id, cate } }, toggleFriend }) => {
+  const [isFriendState, setIsFriendState] = useState(false);
   const { data, loading } = useQuery(SEE_USER, {
     variables: {
       id
@@ -29,6 +32,11 @@ const ProfileContainer = ({ match: { params: { id, cate } } }) => {
       } else {
         toast.success("Friend Request Cancel Succeed");
       }
+      toggleFriend({
+        id,
+        isFriend: result
+      });
+      setIsFriendState(result);
     } catch (err) {
       toast.error(err.message);
     }
@@ -39,13 +47,19 @@ const ProfileContainer = ({ match: { params: { id, cate } } }) => {
       await confirmFriendMutation();
     }
   };
+  useEffect(
+    () => {
+      data && data.seeUser && data.seeUser.isFriend && setIsFriendState(data.seeUser.isFriend);
+    },
+    [data]
+  );
   return (
     !loading &&
     data &&
     data.seeUser &&
     <ProfilePresenter
       {...data.seeUser}
-      isFriend={data.seeUser.isFriend}
+      isFriend={isFriendState}
       onAddFriend={onAddFriend}
       onConfirmFriend={onConfirmFriend}
       isRequestFriend={data.seeUser.isRequestFriend}
@@ -54,4 +68,10 @@ const ProfileContainer = ({ match: { params: { id, cate } } }) => {
   );
 };
 
-export default ProfileContainer;
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleFriend: friend => dispatch(toggleFriend(friend))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(ProfileContainer);

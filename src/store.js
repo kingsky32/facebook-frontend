@@ -36,10 +36,16 @@ const facebook = createSlice({
     },
     clearFeed: state => {
       state.feeds.length = 0;
+    },
+    toggleFriend: (state, action) => {
+      state.me.peopleYouMayKnow[
+        state.me.peopleYouMayKnow.findIndex(e => e.id === action.payload.id)
+      ].isFriend =
+        action.payload.isFriend;
     }
   }
 });
 
-export const { me, addFeed, deleteFeed, getFeed, clearFeed } = facebook.actions;
+export const { me, addFeed, deleteFeed, getFeed, clearFeed, toggleFriend } = facebook.actions;
 
 export default configureStore({ reducer: facebook.reducer });
