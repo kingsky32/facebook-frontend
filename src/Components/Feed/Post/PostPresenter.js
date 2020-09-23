@@ -7,7 +7,7 @@ import LikeIco from "../../../Assets/Images/Icons/like.svg";
 import { Like, Comment as CommentIcon, Share } from "../../Icons";
 import Avatar from "../../Avatar";
 import InputRound from "../../InputRound";
-import PostOption from "../PostOption";
+import PostOption from "./PostOption";
 import DeletePostPopup from "../DeletePostPopup";
 import EditPostPopup from "../EditPostPopup";
 

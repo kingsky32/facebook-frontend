@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import { DeleteIcon, EditIcon } from "../../Icons/IconsPost";
 
@@ -57,7 +58,7 @@ const OptionText = styled.span`
   font-weight: 500;
 `;
 
-const PostOptionPresenter = ({ me, user, onDeletePopup, onEditPopup }) => {
+const PostOption = ({ facebook: { me }, user, onDeletePopup, onEditPopup }) => {
   return (
     <Container>
       <Options>
@@ -76,4 +77,8 @@ const PostOptionPresenter = ({ me, user, onDeletePopup, onEditPopup }) => {
   );
 };
 
-export default PostOptionPresenter;
+const mapStateToProps = state => {
+  return { facebook: state };
+};
+
+export default connect(mapStateToProps)(PostOption);
