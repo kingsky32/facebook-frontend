@@ -16,12 +16,13 @@ const Text = styled.div`
 
 const ButtonArea = styled.div`
   padding-top: 1.5rem;
+  display: flex;
   align-self: flex-end;
 `;
 
 const DeleteButton = styled(Button)`
   padding: 0 1.2rem;
-  line-height: 3.6rem;
+  line-height: 2rem;
   font-size: 1.5rem;
   transition: .25s background-color ease;
   &:hover {

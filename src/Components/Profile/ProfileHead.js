@@ -194,35 +194,35 @@ const ProfileHead = ({
             </Navigation>
           </ProfileNavigation>
           {!isSelf
-            ? isRequestFriend
+            ? isFriend === 2
               ? <ProfileOption>
                   <Option>
-                    <RespondOptionButton
-                      icon={<RespondOptionIcon src={RespondIcon} />}
-                      text="Confirm"
-                      onClick={onConfirmFriend}
-                    />
+                    <OptionButton icon={<OptionIcon text="Message" src={Messenger} />} />
                   </Option>
                   <Option>
-                    <OptionButton icon={<OptionIcon src={Messenger} />} />
+                    <OptionButton icon={<OptionIcon src={CallIcon} />} />
                   </Option>
                   <Option>
-                    <OptionButton icon={<OptionIcon src={Follow} />} />
+                    <OptionButton icon={<OptionIcon src={isFriendIcon} />} />
                   </Option>
                   <Option>
                     <OptionButton icon={<OptionIcon src={EllipsisH} />} />
                   </Option>
                 </ProfileOption>
-              : isFriend === 2
+              : isRequestFriend
                 ? <ProfileOption>
                     <Option>
-                      <OptionButton icon={<OptionIcon text="Message" src={Messenger} />} />
+                      <RespondOptionButton
+                        icon={<RespondOptionIcon src={RespondIcon} />}
+                        text="Confirm"
+                        onClick={onConfirmFriend}
+                      />
                     </Option>
                     <Option>
-                      <OptionButton icon={<OptionIcon src={CallIcon} />} />
+                      <OptionButton icon={<OptionIcon src={Messenger} />} />
                     </Option>
                     <Option>
-                      <OptionButton icon={<OptionIcon src={isFriendIcon} />} />
+                      <OptionButton icon={<OptionIcon src={Follow} />} />
                     </Option>
                     <Option>
                       <OptionButton icon={<OptionIcon src={EllipsisH} />} />

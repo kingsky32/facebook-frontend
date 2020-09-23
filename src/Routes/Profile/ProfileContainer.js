@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { connect } from "react-redux";
 import { toggleFriend } from "../../store";
 
-const ProfileContainer = ({ match: { params: { id, cate } }, toggleFriend }) => {
+const ProfileContainer = ({ match: { params: { id, cate } }, toggleFriend, facebook: { me } }) => {
   const [isFriendState, setIsFriendState] = useState(false);
   const { data, loading } = useQuery(SEE_USER, {
     variables: {
@@ -18,9 +18,10 @@ const ProfileContainer = ({ match: { params: { id, cate } }, toggleFriend }) => 
       id
     }
   });
+  const [confirmFriend] = me.requestFriends.filter(e => e.opponent.id === id);
   const [confirmFriendMutation] = useMutation(CONFIRM_FRIEND, {
     variables: {
-      id
+      id: confirmFriend && confirmFriend.id
     }
   });
   const onAddFriend = async e => {
@@ -44,7 +45,14 @@ const ProfileContainer = ({ match: { params: { id, cate } }, toggleFriend }) => 
   const onConfirmFriend = async e => {
     e.preventDefault();
     if (data.seeUser.isRequestFriend) {
-      await confirmFriendMutation();
+      const { data: result } = await confirmFriendMutation();
+      if (result) {
+        setIsFriendState(2);
+        toggleFriend({
+          id,
+          isFriend: 2
+        });
+      }
     }
   };
   useEffect(
@@ -74,4 +82,8 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(ProfileContainer);
+const mapStateToProps = state => {
+  return { facebook: state };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);

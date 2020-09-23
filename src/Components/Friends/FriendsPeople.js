@@ -3,12 +3,15 @@ import { connect } from "react-redux";
 import FriendsCard from "./FriendsCard";
 import FriendsNavigationContainer from "./FriendsNavigationContainer";
 
-const FriendsPeople = ({ friends, match: { params: { id: paramId } } }) => {
-  return friends
-    ? friends.length > 0 &&
+const FriendsPeople = ({
+  facebook: { me: { peopleYouMayKnow } },
+  match: { params: { id: paramId } }
+}) => {
+  return peopleYouMayKnow
+    ? peopleYouMayKnow.length > 0 &&
       <FriendsNavigationContainer
         title="People You May know"
-        friends={friends.map(friend =>
+        friends={peopleYouMayKnow.map(friend =>
           <FriendsCard
             key={friend.id}
             paramId={paramId}

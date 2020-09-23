@@ -3,15 +3,12 @@ import { connect } from "react-redux";
 import FriendsCard from "./FriendsCard";
 import FriendsNavigationContainer from "./FriendsNavigationContainer";
 
-const FriendRequests = ({
-  facebook: { me: { requestFriends } },
-  match: { params: { id: paramId } }
-}) => {
-  return requestFriends
-    ? requestFriends.length > 0 &&
+const FriendRequests = ({ facebook: { me }, match: { params: { id: paramId } } }) => {
+  return me.requestFriends
+    ? me.requestFriends.length > 0 &&
       <FriendsNavigationContainer
-        title={`${requestFriends.length} Friend Requests`}
-        friends={requestFriends.map(friend =>
+        title={`${me.requestFriends.length} Friend Requests`}
+        friends={me.requestFriends.map(friend =>
           <FriendsCard
             key={friend.id}
             paramId={paramId}

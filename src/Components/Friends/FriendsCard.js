@@ -1,6 +1,11 @@
 import React from "react";
+import { useMutation } from "react-apollo-hooks";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import styled from "styled-components";
+import { ADD_FRIEND, CONFIRM_FRIEND } from "../../Routes/Friends/FriendsQueries";
+import { toggleFriend } from "../../store";
 import Avatar from "../Avatar";
 import Button from "../Button";
 import Timestamp from "../Timestamp";
@@ -78,15 +83,56 @@ const FriendsCard = ({
   avatar,
   username,
   createdAt,
-  onConfirm,
-  onAddFriend,
   onDelete,
   onRemove,
   paramId,
   isFriend,
-  isRequestFriend
+  isRequestFriend,
+  toggleFriend,
+  facebook: { me }
 }) => {
+  const [addFriendMutation] = useMutation(ADD_FRIEND, {
+    variables: {
+      id: uid
+    }
+  });
+  const [confirmFriend] = me.requestFriends.filter(e => e.opponent.id === uid);
+  const [confirmFriendMutation] = useMutation(CONFIRM_FRIEND, {
+    variables: {
+      id: confirmFriend && confirmFriend.id
+    }
+  });
+  const onAddFriend = async e => {
+    e.preventDefault();
+    try {
+      const { data: { addFriend: result } } = await addFriendMutation();
+      if (result === 1) {
+        toast.success("Friend Request Transfer Succeed");
+      } else {
+        toast.success("Friend Request Cancel Succeed");
+      }
+      toggleFriend({
+        id: uid,
+        isFriend: result
+      });
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
+  const onConfirmFriend = async e => {
+    e.preventDefault();
+    if (isRequestFriend) {
+      const { data: result } = await confirmFriendMutation();
+      if (result) {
+        toggleFriend({
+          id: uid,
+          isFriend: 2
+        });
+      }
+    }
+  };
   return (
+    isFriend !== 2 &&
     <Container className={paramId === uid && "active"}>
       <Link to={`/friends/${uid}/timeline`}>
         <Avatar url={avatar} size="6rem" />
@@ -97,14 +143,14 @@ const FriendsCard = ({
             </Username>
             {createdAt && <Timestamp createdAt={createdAt} />}
           </UsernameContainer>
-          {isFriend === 1
+          {isRequestFriend
             ? <ButtonContainer>
-                <DeleteButton text="Cancel Request" onClick={onAddFriend} />
+                <ConfirmButton text="Confirm" onClick={onConfirmFriend} />
+                <DeleteButton text="Delete" onClick={onDelete} />
               </ButtonContainer>
-            : isRequestFriend
+            : isFriend === 1
               ? <ButtonContainer>
-                  <ConfirmButton text="Confirm" onClick={onConfirm} />
-                  <DeleteButton text="Delete" onClick={onDelete} />
+                  <DeleteButton text="Cancel Request" onClick={onAddFriend} />
                 </ButtonContainer>
               : <ButtonContainer>
                   <ConfirmButton text="Add Friend" onClick={onAddFriend} />
@@ -116,4 +162,14 @@ const FriendsCard = ({
   );
 };
 
-export default FriendsCard;
+const mapStateToProps = state => {
+  return { facebook: state };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleFriend: friend => dispatch(toggleFriend(friend))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FriendsCard);
