@@ -2,6 +2,7 @@ import React from "react";
 import icons from "../Assets/Images/Icons/icons.png";
 import icons2 from "../Assets/Images/Icons/icons2.png";
 import iconsFriends from "../Assets/Images/Icons/Friends/icons-friends.png";
+import iconsAccount from "../Assets/Images/Icons/Account/icons-account.png";
 import styled, { keyframes, css } from "styled-components";
 
 const Icons = styled.i`
@@ -31,6 +32,15 @@ const IconsFriend = styled.i`
   background-size: 25px 1213px;
   background-repeat: no-repeat;
   display: inline-block;
+`;
+
+const IconsAccount = styled.i`
+  background-image: url(${iconsAccount});
+  background-size: 25px 592px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: ${props => props.size};
+  height: ${props => props.size};
 `;
 
 const LiveVideoIcon = styled(Icons)`
@@ -85,6 +95,10 @@ const FriendHomeIcon = styled(IconsFriend)`
 
 const AllFreindIcon = styled(IconsFriend)`
   background-position: 0 -377px;
+`;
+
+const LogOutIcon = styled(IconsAccount)`
+  background-position: 0 -319px;
 `;
 
 export const Logo = ({ size = 40 }) =>
@@ -180,3 +194,5 @@ export const Plus = ({ size = "2.4rem" }) => <PlusIcon size={size} />;
 export const FriendHome = ({ size = "2rem" }) => <FriendHomeIcon size={size} />;
 
 export const FriendAllFriends = ({ size = "2rem" }) => <AllFreindIcon size={size} />;
+
+export const LogOut = ({ size = "2rem" }) => <LogOutIcon size={size} />;

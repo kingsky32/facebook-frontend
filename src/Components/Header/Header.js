@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Logo,
   Home,
@@ -24,6 +24,7 @@ import HeaderNavigatorButton from "./HeaderNavigatorButton";
 import CircleButton from "../CircleButton";
 import InputRound from "../InputRound";
 import Avatar from "../Avatar";
+import AccountOption from "./AccountOption";
 
 const Container = styled.header`
   display: flex;
@@ -110,6 +111,7 @@ const EInputRound = styled(InputRound)`
 `;
 
 const Header = ({ facebook: { me }, history }) => {
+  const [isAccountOption, setIsAccountOption] = useState(false);
   const search = useInput();
   const pathName = history.location.pathname;
   const profileId = pathName.split("/")[2];
@@ -173,8 +175,13 @@ const Header = ({ facebook: { me }, history }) => {
         <CircleButton icon={<FontAwesomeIcon icon={faPlus} size="lg" />} info="Create" />
         <CircleButton icon={<Message />} info="Messenger" />
         <CircleButton icon={<Notifications />} info="Notifications" />
-        <CircleButton icon={<FontAwesomeIcon icon={faCaretDown} size="2x" />} info="Account" />
+        <CircleButton
+          icon={<FontAwesomeIcon icon={faCaretDown} size="2x" />}
+          info="Account"
+          onClick={() => setIsAccountOption(prev => !prev)}
+        />
       </HeaderRight>
+      {isAccountOption && <AccountOption />}
     </Container>
   );
 };
