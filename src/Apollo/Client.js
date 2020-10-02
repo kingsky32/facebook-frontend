@@ -2,7 +2,7 @@ import ApolloClient from "apollo-boost";
 import { defaults, resolvers } from "./LocalState";
 
 export default new ApolloClient({
-  uri: "http://192.168.219.104:4000",
+  uri: "http://facebook-backend.kingsky32.co.kr",
   clientState: {
     defaults,
     resolvers
