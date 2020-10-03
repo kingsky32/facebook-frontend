@@ -6,7 +6,13 @@ import { toast } from "react-toastify";
 import EditPostPresenter from "./EditPostPresenter";
 import { EDIT_POST } from "./EditPostQueries";
 
-const EditPostContainer = ({ id, facebook: { me }, inputRef, onCloseEditPopup, beforeCaption }) => {
+const EditPostContainer = ({
+  id,
+  prismabook: { me },
+  inputRef,
+  onCloseEditPopup,
+  beforeCaption
+}) => {
   const caption = useInput(beforeCaption);
   const [isDisabled, setIsDisabled] = useState(true);
   const modalRef = useRef(null);
@@ -56,7 +62,7 @@ const EditPostContainer = ({ id, facebook: { me }, inputRef, onCloseEditPopup, b
 };
 
 const mapStateToProps = state => {
-  return { facebook: state };
+  return { prismabook: state };
 };
 
 export default connect(mapStateToProps)(EditPostContainer);

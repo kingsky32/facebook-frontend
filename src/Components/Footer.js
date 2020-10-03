@@ -15,7 +15,7 @@ const Span = styled.span`
 
 const Footer = () =>
   <Container>
-    <Span>Facebook &copy; 2020</Span>
+    <Span>Prismabook &copy; 2020</Span>
   </Container>;
 
 export default Footer;

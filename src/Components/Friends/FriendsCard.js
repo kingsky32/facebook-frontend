@@ -89,7 +89,7 @@ const FriendsCard = ({
   isFriend,
   isRequestFriend,
   toggleFriend,
-  facebook: { me }
+  prismabook: { me }
 }) => {
   const [addFriendMutation] = useMutation(ADD_FRIEND, {
     variables: {
@@ -163,7 +163,7 @@ const FriendsCard = ({
 };
 
 const mapStateToProps = state => {
-  return { facebook: state };
+  return { prismabook: state };
 };
 
 const mapDispatchToProps = dispatch => {

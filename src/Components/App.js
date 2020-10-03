@@ -36,7 +36,7 @@ export default () => {
   return (
     <ThemeProvider theme={Theme}>
       <Helmet>
-        <title>Facebook</title>
+        <title>Prismabook</title>
         <link rel="shortcut icon" href={Favicon} />
       </Helmet>
       <RootWrapper>

@@ -43,7 +43,7 @@ const EInputRound = styled(InputRound)`
   }
 `;
 
-const CreatePostFeed = ({ facebook: { me: { id, avatar, username } }, onCreatePost }) => {
+const CreatePostFeed = ({ prismabook: { me: { id, avatar, username } }, onCreatePost }) => {
   return (
     <Container>
       <InputArea>
@@ -83,7 +83,7 @@ CreatePostFeed.propTypes = {
 };
 
 const mapStateToProps = state => {
-  return { facebook: state };
+  return { prismabook: state };
 };
 
 export default connect(mapStateToProps)(CreatePostFeed);

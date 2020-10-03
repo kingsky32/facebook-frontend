@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import FriendsCard from "./FriendsCard";
 import FriendsNavigationContainer from "./FriendsNavigationContainer";
 
-const FriendRequests = ({ facebook: { me }, match: { params: { id: paramId } } }) => {
+const FriendRequests = ({ prismabook: { me }, match: { params: { id: paramId } } }) => {
   return me.requestFriends
     ? me.requestFriends.length > 0 &&
       <FriendsNavigationContainer
@@ -25,7 +25,7 @@ const FriendRequests = ({ facebook: { me }, match: { params: { id: paramId } } }
 };
 
 const mapStateToProps = state => {
-  return { facebook: state };
+  return { prismabook: state };
 };
 
 export default connect(mapStateToProps)(FriendRequests);

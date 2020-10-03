@@ -7,7 +7,7 @@ import { UPLOAD } from "./CreatePostQueries";
 import { toast } from "react-toastify";
 import { addFeed } from "../../../store";
 
-const CreatePostContainer = ({ facebook: { me }, inputRef, onCreatePost, addFeed }) => {
+const CreatePostContainer = ({ prismabook: { me }, inputRef, onCreatePost, addFeed }) => {
   const caption = useInput();
   const [isDisabled, setIsDisabled] = useState(true);
   const modalRef = useRef(null);
@@ -64,7 +64,7 @@ const CreatePostContainer = ({ facebook: { me }, inputRef, onCreatePost, addFeed
 };
 
 const mapStateToProps = state => {
-  return { facebook: state };
+  return { prismabook: state };
 };
 
 const mapDispatchToProps = dispatch => {

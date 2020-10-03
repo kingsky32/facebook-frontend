@@ -5,7 +5,7 @@ import { getFeed, clearFeed } from "../../store";
 import { useQuery } from "react-apollo-hooks";
 import { SEE_FEED } from "./HomeQueries";
 
-const HomeContainer = ({ facebook: { me, feeds }, getFeed, clearFeed }) => {
+const HomeContainer = ({ prismabook: { me, feeds }, getFeed, clearFeed }) => {
   const { data, loading } = useQuery(SEE_FEED);
   const [isCreatePost, setIsCreatePost] = useState(false);
   const inputRef = useRef(null);
@@ -38,7 +38,7 @@ const HomeContainer = ({ facebook: { me, feeds }, getFeed, clearFeed }) => {
 };
 
 const mapStateToProps = state => {
-  return { facebook: state };
+  return { prismabook: state };
 };
 
 const mapDispatchToProps = dispatch => {

@@ -68,11 +68,11 @@ const LoginPresenter = ({ onSubmit, email, password }) =>
   <Wrapper>
     <Container>
       <Helmet>
-        <title>Facebook - Log In or Sign Up</title>
+        <title>Prismabook - Log In or Sign Up</title>
       </Helmet>
       <Image src={Logo} />
       <FormWrapper>
-        <Title>Log Into Facebook</Title>
+        <Title>Log Into Prismabook</Title>
         <Form onSubmit={onSubmit}>
           <EInput placeholder="Email" value={email.value} onChange={email.onChange} required />
           <EInput
@@ -85,7 +85,7 @@ const LoginPresenter = ({ onSubmit, email, password }) =>
           <Button text="Log In" />
         </Form>
         <LinkContainer>
-          <ELink to="#">Forgot account?</ELink> · <ELink to="#">Sign up for Facebook</ELink>
+          <ELink to="#">Forgot account?</ELink> · <ELink to="#">Sign up for Prismabook</ELink>
         </LinkContainer>
       </FormWrapper>
     </Container>

@@ -6,7 +6,11 @@ import { toast } from "react-toastify";
 import { connect } from "react-redux";
 import { toggleFriend } from "../../store";
 
-const ProfileContainer = ({ match: { params: { id, cate } }, toggleFriend, facebook: { me } }) => {
+const ProfileContainer = ({
+  match: { params: { id, cate } },
+  toggleFriend,
+  prismabook: { me }
+}) => {
   const [isFriendState, setIsFriendState] = useState(false);
   const { data, loading } = useQuery(SEE_USER, {
     variables: {
@@ -83,7 +87,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-  return { facebook: state };
+  return { prismabook: state };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);

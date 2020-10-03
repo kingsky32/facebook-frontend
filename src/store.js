@@ -1,7 +1,7 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-const facebook = createSlice({
-  name: "facebookReducer",
+const prismabook = createSlice({
+  name: "prismabookReducer",
   initialState: {
     me: {
       id: "",
@@ -46,6 +46,6 @@ const facebook = createSlice({
   }
 });
 
-export const { me, addFeed, deleteFeed, getFeed, clearFeed, toggleFriend } = facebook.actions;
+export const { me, addFeed, deleteFeed, getFeed, clearFeed, toggleFriend } = prismabook.actions;
 
-export default configureStore({ reducer: facebook.reducer });
+export default configureStore({ reducer: prismabook.reducer });

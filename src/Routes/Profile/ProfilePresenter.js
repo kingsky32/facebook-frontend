@@ -35,7 +35,7 @@ const ProfilePresenter = ({
     <Wrapper>
       <Helmet>
         <title>
-          {fullName} | Facebook
+          {fullName} | Prismabook
         </title>
       </Helmet>
       <Container>

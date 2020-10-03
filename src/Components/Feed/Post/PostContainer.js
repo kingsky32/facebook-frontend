@@ -6,7 +6,7 @@ import { TOGGLE_LIKE, ADD_COMMENT } from "./PostQueries";
 import useInput from "../../../Hooks/useInput";
 
 const PostContainer = ({
-  facebook: { me },
+  prismabook: { me },
   id,
   caption,
   user,
@@ -121,7 +121,7 @@ const PostContainer = ({
 };
 
 const mapStateToProps = state => {
-  return { facebook: state };
+  return { prismabook: state };
 };
 
 export default connect(mapStateToProps)(PostContainer);

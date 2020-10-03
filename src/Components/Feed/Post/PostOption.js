@@ -58,7 +58,7 @@ const OptionText = styled.span`
   font-weight: 500;
 `;
 
-const PostOption = ({ facebook: { me }, user, onDeletePopup, onEditPopup }) => {
+const PostOption = ({ prismabook: { me }, user, onDeletePopup, onEditPopup }) => {
   return (
     <Container>
       <Options>
@@ -78,7 +78,7 @@ const PostOption = ({ facebook: { me }, user, onDeletePopup, onEditPopup }) => {
 };
 
 const mapStateToProps = state => {
-  return { facebook: state };
+  return { prismabook: state };
 };
 
 export default connect(mapStateToProps)(PostOption);

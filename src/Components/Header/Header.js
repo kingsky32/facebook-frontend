@@ -110,7 +110,7 @@ const EInputRound = styled(InputRound)`
   padding-left: 3.8rem;
 `;
 
-const Header = ({ facebook: { me }, history }) => {
+const Header = ({ prismabook: { me }, history }) => {
   const [isAccountOption, setIsAccountOption] = useState(false);
   const search = useInput();
   const pathName = history.location.pathname;
@@ -132,7 +132,7 @@ const Header = ({ facebook: { me }, history }) => {
           <EInputRound
             value={search.value}
             onChange={search.onChange}
-            placeholder="Search Facebook"
+            placeholder="Search Prismabook"
           />
         </SearchForm>
       </HeaderLeft>
@@ -187,7 +187,7 @@ const Header = ({ facebook: { me }, history }) => {
 };
 
 const mapStateToProps = state => {
-  return { facebook: state };
+  return { prismabook: state };
 };
 
 export default connect(mapStateToProps)(withRouter(Header));

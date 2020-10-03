@@ -4,7 +4,7 @@ import FriendsCard from "./FriendsCard";
 import FriendsNavigationContainer from "./FriendsNavigationContainer";
 
 const FriendsPeople = ({
-  facebook: { me: { peopleYouMayKnow } },
+  prismabook: { me: { peopleYouMayKnow } },
   match: { params: { id: paramId } }
 }) => {
   return peopleYouMayKnow
@@ -28,7 +28,7 @@ const FriendsPeople = ({
 };
 
 const mapStateToProps = state => {
-  return { facebook: state };
+  return { prismabook: state };
 };
 
 export default connect(mapStateToProps)(FriendsPeople);

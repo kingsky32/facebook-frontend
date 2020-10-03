@@ -1,6 +1,6 @@
-# Facebook Frontend
+# Prismabook Frontend
 
-Facebook clone with Express + Prisma + React + React Redux
+Prismabook clone with Express + Prisma + React + React Redux
 
 ## User Stories
 

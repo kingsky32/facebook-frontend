@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import Button from "../../Components/Button";
-import Logo from "../../Assets/Images/Icons/logo.svg";
 import Input from "../../Components/Input";
 import { Link } from "react-router-dom";
 import ModalSignUp from "../../Components/ModalSignUp";
@@ -19,11 +18,6 @@ const Container = styled.div`
 `;
 
 const TitleWrapper = styled.div`flex: 1;`;
-
-const Image = styled.img`
-  width: 25rem;
-  margin-left: -2.5rem;
-`;
 
 const Title = styled.h2`
   font-size: 2.8rem;
@@ -91,11 +85,10 @@ const AuthPresenter = ({
   <Wrapper>
     <Container>
       <Helmet>
-        <title>Facebook - Log In or Sign Up</title>
+        <title>Prismabook - Log In or Sign Up</title>
       </Helmet>
       <TitleWrapper>
-        <Image src={Logo} />
-        <Title>Connect with friends and the world around you on Facebook.</Title>
+        <Title>Connect with friends and the world around you on Prismabook.</Title>
       </TitleWrapper>
       <FormWrapper>
         <Form onSubmit={onSubmit}>
