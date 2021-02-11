@@ -2,12 +2,12 @@ import ApolloClient from "apollo-boost";
 import { defaults, resolvers } from "./LocalState";
 
 export default new ApolloClient({
-  uri: "http://prismabook-backend.seung-ju.com",
+  uri: "http://prismabook-server.seung-ju.com",
   clientState: {
     defaults,
-    resolvers
+    resolvers,
   },
   headers: {
-    Authorization: `Bearer ${localStorage.getItem("token")}`
-  }
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  },
 });
